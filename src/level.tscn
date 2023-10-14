@@ -1,8 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2s5can1nikgf"]
+[gd_scene load_steps=5 format=3 uid="uid://d2s5can1nikgf"]
 
-[ext_resource type="PackedScene" uid="uid://dli126qdy01ey" path="res://src/player.tscn" id="1_jpbdj"]
+[ext_resource type="PackedScene" uid="uid://tpbh374pnsel" path="res://src/player.tscn" id="1_jpbdj"]
+[ext_resource type="PackedScene" uid="uid://cob8mgfxhfcs2" path="res://src/coin.tscn" id="2_jex46"]
+[ext_resource type="Texture2D" uid="uid://it8hjt58tya5" path="res://icon.svg" id="2_nf6li"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h7xjd"]
+size = Vector2(645, 65)
 
 [node name="Level" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_jpbdj")]
-position = Vector2(485, 283)
+position = Vector2(270, 179)
+
+[node name="Coin" parent="." instance=ExtResource("2_jex46")]
+position = Vector2(689, 169)
+
+[node name="Wall" type="StaticBody2D" parent="."]
+position = Vector2(641, 607)
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall"]
+scale = Vector2(5, 0.5)
+texture = ExtResource("2_nf6li")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2(2.5, -0.5)
+shape = SubResource("RectangleShape2D_h7xjd")
