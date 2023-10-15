@@ -23,14 +23,15 @@ func add_coin():
 	coins += 1
 	print(coins)
 
+
 func _process(delta):
 	# Checks if we have clicked and if we got coins
-	if Input.is_action_just_pressed("click") and coins > 0:
+	if Input.is_action_pressed("click") and coins > 0 and $ShootCooldown.time_left == 0:
 		coins -= 1
 		var shoot_vector = get_global_mouse_position() - position
 		var to_shoot = bullet.instantiate()
 		to_shoot.direction = shoot_vector.normalized()
 		to_shoot.position = self.position
 		get_parent().add_child(to_shoot)
-	pass
+		$ShootCooldown.start()
 
