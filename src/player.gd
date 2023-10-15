@@ -3,12 +3,22 @@ extends CharacterBody2D
 
 var direction: Vector2
 
-@export var speed = 500
+@export var speed = 300
 
 # at 10 coins for now for testing purposes
-var coins := 10
+var pennies := 10
+var nickels := 0
+var dimes := 0
+var quarters := 0
 
 var bullet = preload("res://src/bullet.tscn")
+
+@onready var hud = $UI/HUD as HUD
+
+func _ready():
+	hud.player = self
+	hud.update_coins()
+
 
 func _physics_process(delta):
 	# Get the input direction as a normalized vector
@@ -20,14 +30,15 @@ func _physics_process(delta):
 
 
 func add_coin():
-	coins += 1
-	print(coins)
+	pennies += 1
+	hud.update_coins()
 
 
 func _process(delta):
 	# Checks if we have clicked and if we got coins
-	if Input.is_action_pressed("click") and coins > 0 and $ShootCooldown.time_left == 0:
-		coins -= 1
+	if Input.is_action_pressed("click") and pennies > 0 and $ShootCooldown.time_left == 0:
+		pennies -= 1
+		hud.update_coins()
 		var shoot_vector = get_global_mouse_position() - position
 		var to_shoot = bullet.instantiate()
 		to_shoot.direction = shoot_vector.normalized()

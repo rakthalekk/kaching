@@ -1,0 +1,17 @@
+class_name HUD
+extends Control
+
+
+var player: Player
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func update_coins():
+	$Coins/Pennies.text = "P: %d" % player.pennies
+	$Coins/Nickels.text = "N: %d" % player.nickels
+	$Coins/Dimes.text = "D: %d" % player.dimes
+	$Coins/Quarters.text = "Q: %d" % player.quarters

@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://tpbh374pnsel"]
+[gd_scene load_steps=5 format=3 uid="uid://tpbh374pnsel"]
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_awono"]
 [ext_resource type="Texture2D" uid="uid://it8hjt58tya5" path="res://icon.svg" id="1_ya7u0"]
+[ext_resource type="PackedScene" uid="uid://c2ub8vdlon1lm" path="res://src/hud.tscn" id="3_cdex1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xibsx"]
-size = Vector2(124, 124)
+size = Vector2(26, 39)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -12,12 +13,17 @@ collision_mask = 5
 script = ExtResource("1_awono")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 0)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_xibsx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.3)
 texture = ExtResource("1_ya7u0")
 
 [node name="ShootCooldown" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="UI" instance=ExtResource("3_cdex1")]
