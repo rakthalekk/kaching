@@ -9,7 +9,7 @@ script = ExtResource("1_ddrm5")
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(0, 0)
 width = 1.0
-default_color = Color(1, 0, 0, 1)
+default_color = Color(0.447059, 0.905882, 0.14902, 1)
 
 [node name="FadeTimer" type="Timer" parent="."]
 wait_time = 0.05
