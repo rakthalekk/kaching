@@ -40,3 +40,9 @@ text = "D: 0"
 [node name="Quarters" type="Label" parent="Coins"]
 layout_mode = 2
 text = "Q: 0"
+
+[node name="ActiveCoin" type="Label" parent="Coins"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_colors/font_color = Color(0.960784, 0, 0, 1)
+text = "Active: P"

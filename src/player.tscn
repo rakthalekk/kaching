@@ -20,8 +20,15 @@ shape = SubResource("RectangleShape2D_xibsx")
 scale = Vector2(0.2, 0.3)
 texture = ExtResource("1_ya7u0")
 
-[node name="ShootCooldown" type="Timer" parent="."]
+[node name="PennyCooldown" type="Timer" parent="."]
 wait_time = 0.1
+one_shot = true
+
+[node name="DimeCooldown" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="QuarterCooldown" type="Timer" parent="."]
 one_shot = true
 
 [node name="UI" type="CanvasLayer" parent="."]

@@ -1,7 +1,7 @@
 class_name HUD
 extends Control
 
-
+# Reference to the player. As a child of the player, this is assigned by the player's ready function
 var player: Player
 
 
@@ -15,3 +15,7 @@ func update_coins():
 	$Coins/Nickels.text = "N: %d" % player.nickels
 	$Coins/Dimes.text = "D: %d" % player.dimes
 	$Coins/Quarters.text = "Q: %d" % player.quarters
+
+
+func update_active_coin():
+	$Coins/ActiveCoin.text = "Active: " + player.active_coin
