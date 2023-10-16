@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c2ub8vdlon1lm" path="res://src/hud.tscn" id="3_cdex1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xibsx"]
-size = Vector2(26, 39)
+size = Vector2(12, 18)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -13,11 +13,10 @@ collision_mask = 5
 script = ExtResource("1_awono")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_xibsx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.3)
+scale = Vector2(0.1, 0.15)
 texture = ExtResource("1_ya7u0")
 
 [node name="PennyCooldown" type="Timer" parent="."]
