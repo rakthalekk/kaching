@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctw7cnigjtflc"
-path="res://.godot/imported/Wall-Golden Dragon.png-2f926d4255d1e92536b466aa7990a21f.ctex"
+uid="uid://bmvm2eegx2e6t"
+path="res://.godot/imported/Golden Dragon Tileset.png-44789ace9f0c63579cb72e980afcdd35.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Wall-Golden Dragon.png"
-dest_files=["res://.godot/imported/Wall-Golden Dragon.png-2f926d4255d1e92536b466aa7990a21f.ctex"]
+source_file="res://assets/Golden Dragon Tileset.png"
+dest_files=["res://.godot/imported/Golden Dragon Tileset.png-44789ace9f0c63579cb72e980afcdd35.ctex"]
 
 [params]
 
