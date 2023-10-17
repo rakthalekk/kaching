@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://tpbh374pnsel" path="res://src/player.tscn" id="1_jpbdj"]
 [ext_resource type="PackedScene" uid="uid://cob8mgfxhfcs2" path="res://src/coin.tscn" id="2_jex46"]
 [ext_resource type="Texture2D" uid="uid://it8hjt58tya5" path="res://icon.svg" id="2_nf6li"]
-[ext_resource type="Texture2D" uid="uid://bmvm2eegx2e6t" path="res://assets/Golden Dragon Tileset.png" id="3_bqujp"]
+[ext_resource type="Texture2D" uid="uid://u31s1smrrunc" path="res://assets/Golden Dragon Tileset.png" id="3_bqujp"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_vdyxs"]
 tile_data = PackedInt32Array(0, 2, 0, 65536, 2, 1, 131072, 2, 2, 196608, 2, 3, 1, 65538, 0, 65537, 65538, 1, 196609, 65538, 3, 2, 131074, 1, 131074, 131074, 2, 196610, 131074, 3, 131075, 2, 2, 196611, 2, 3, 4, 196610, 0, 65540, 196610, 1, 196612, 65538, 3, 5, 196610, 2, 65541, 196610, 3, 131077, 131074, 2, 196613, 131074, 3)
@@ -345,11 +345,11 @@ layer_1/tile_data = PackedInt32Array(-196607, 1, 2, -131071, 1, 3, -65535, 1, 4,
 [node name="Player" parent="." instance=ExtResource("1_jpbdj")]
 position = Vector2(270, 179)
 
-[node name="Coin" parent="." instance=ExtResource("2_jex46")]
-position = Vector2(441, 185)
-
 [node name="FollowCamera" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 process_callback = 0
+
+[node name="Coin" parent="." instance=ExtResource("2_jex46")]
+position = Vector2(441, 185)
 
 [connection signal="input_event" from="Player" to="Player" method="_on_input_event"]
