@@ -1,10 +1,8 @@
 class_name Player
-extends CharacterBody2D
+extends Actor
 
 ### EXPORT
 
-# Player speed
-@export var speed = 300
 
 
 ### CONSTANTS
@@ -24,8 +22,7 @@ const QUARTER_GRENADE = preload("res://src/quarter_grenade.tscn")
 
 ### LOCAL VARS
 
-# Current direction of the player
-var direction: Vector2
+
 
 # Player's current active coin
 var active_coin = "P"
@@ -64,44 +61,34 @@ func add_coin():
 
 func _process(delta):
 	# Check if the player has input the click action
-	if Input.is_action_pressed("click"):
+	if Input.is_action_pressed("penny"):
 		# If this coin is a penny, attempt to shoot a penny
-		if active_coin == "P":
-			if pennies > 0 and $PennyCooldown.time_left == 0:
-				pennies -= 1
-				$PennyCooldown.start()
-				
-				var shoot_vector = get_global_mouse_position() - global_position
-				var to_shoot = PENNY_BULLET.instantiate() as PennyBullet
-				to_shoot.set_direction(shoot_vector.normalized())
-				to_shoot.position = self.position
-				get_parent().add_child(to_shoot)
-		elif active_coin == "D":
-			if dimes > 0 and $DimeCooldown.time_left == 0:
-				dimes -= 1
-				$DimeCooldown.start()
-				
-				var shoot_vector = get_global_mouse_position() - global_position
-				var to_shoot = DIME_BULLET.instantiate()
-				to_shoot.direction = shoot_vector.normalized()
-				to_shoot.position = self.position
-				get_parent().add_child(to_shoot)
-		elif active_coin == "Q":
-			if quarters > 0 and $QuarterCooldown.time_left == 0:
-				quarters -= 1
-				$QuarterCooldown.start()
-				
-				var to_shoot = QUARTER_GRENADE.instantiate()
-				to_shoot.position = self.position
-				get_parent().add_child(to_shoot)
+		if pennies > 0 and $PennyCooldown.time_left == 0:
+			pennies -= 1
+			$PennyCooldown.start()
+			
+			var shoot_vector = get_global_mouse_position() - global_position
+			var to_shoot = PENNY_BULLET.instantiate() as PennyBullet
+			to_shoot.set_direction(shoot_vector.normalized())
+			to_shoot.position = self.position
+			get_parent().add_child(to_shoot)
+	if Input.is_action_pressed("dime"):
+		if dimes > 0 and $DimeCooldown.time_left == 0:
+			dimes -= 1
+			$DimeCooldown.start()
+			
+			var shoot_vector = get_global_mouse_position() - global_position
+			var to_shoot = DIME_BULLET.instantiate()
+			to_shoot.direction = shoot_vector.normalized()
+			to_shoot.position = self.position
+			get_parent().add_child(to_shoot)
+	if Input.is_action_pressed("quarter"):
+		if quarters > 0 and $QuarterCooldown.time_left == 0:
+			quarters -= 1
+			$QuarterCooldown.start()
+			
+			var to_shoot = QUARTER_GRENADE.instantiate()
+			to_shoot.position = self.position
+			get_parent().add_child(to_shoot)
 		
 		hud.update_coins()
-	
-	if Input.is_action_just_pressed("up_coin"):
-		active_coin = COIN_TYPES[(COIN_TYPES.find(active_coin) - 1) % COIN_TYPES.size()]
-		hud.update_active_coin()
-	
-	if Input.is_action_just_pressed("down_coin"):
-		active_coin = COIN_TYPES[(COIN_TYPES.find(active_coin) + 1) % COIN_TYPES.size()]
-		hud.update_active_coin()
-

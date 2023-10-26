@@ -11,10 +11,13 @@ var frames_since_init = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	var collider = get_collider()
 	if is_colliding():
 		print(get_collider())
 		$Line2D.add_point(to_local(get_collision_point()))
 		enabled = false
+		if collider is Enemy:
+			collider.yowch(1)
 	elif enabled && frames_since_init > 3:
 		print("no hit")
 		$Line2D.add_point(target_position)
@@ -30,3 +33,4 @@ func set_direction(dir: Vector2):
 
 func _on_fade_timer_timeout():
 	queue_free()
+

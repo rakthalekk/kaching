@@ -51,3 +51,8 @@ func _on_timer_timeout():
 
 func _on_explosion_timer_timeout():
 	queue_free()
+
+
+func _on_explosion_radius_body_entered(body):
+	if body is Enemy:
+		body.yowch(20)
