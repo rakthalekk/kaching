@@ -104,4 +104,9 @@ func _process(delta):
 	if Input.is_action_just_pressed("down_coin"):
 		active_coin = COIN_TYPES[(COIN_TYPES.find(active_coin) + 1) % COIN_TYPES.size()]
 		hud.update_active_coin()
+		
+	if Input.is_action_pressed("equip_menu"):
+		var equip_menu = preload("res://src/equip_menu.tscn").instantiate()
+		get_node("UI/HUD").add_child(equip_menu)
+		pass # load the equip menu "scene" as a child of camera? or player? 
 
