@@ -2,9 +2,7 @@ class_name PennyBullet
 extends RayCast2D
 
 
-@export var distance := 500
-@export var damage := 1
-@export var knockback_force := 100
+@export var attack_data: AttackData
 
 var direction = Vector2.ZERO
 
@@ -17,8 +15,8 @@ func _process(delta):
 		$Line2D.add_point(to_local(get_collision_point()))
 		enabled = false
 		if collider is Enemy:
-			collider.yowch(damage)
-			collider.take_knockback(get_collision_point(), knockback_force)
+			collider.yowch(attack_data.damage)
+			collider.take_knockback(get_collision_point(), attack_data.knockback_force)
 	elif enabled && frames_since_init > 3:
 		print("no hit")
 		$Line2D.add_point(target_position)
@@ -29,7 +27,7 @@ func _process(delta):
 
 func set_direction(dir: Vector2):
 	direction = dir
-	target_position = direction * distance
+	target_position = direction * attack_data.speed
 
 
 func _on_fade_timer_timeout():

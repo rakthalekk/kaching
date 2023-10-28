@@ -1,9 +1,7 @@
 class_name DimeBullet
 extends CharacterBody2D
 
-@export var speed = 300
-@export var damage := 3
-@export var knockback_force := 50
+@export var attack_data: AttackData
 
 var direction: Vector2
 
@@ -23,7 +21,7 @@ func _physics_process(delta):
 			break
 	
 	# Move the bullet based on given direction and set speed
-	velocity = direction * speed
+	velocity = direction * attack_data.speed
 	move_and_slide()
 
 
@@ -33,8 +31,8 @@ func _on_timer_timeout():
 
 func _on_hitbox_body_entered(body):
 	if body is Enemy:
-		body.yowch(damage)
-		body.take_knockback(global_position, knockback_force)
+		body.yowch(attack_data.damage)
+		body.take_knockback(global_position, attack_data.knockback_force)
 		enemies_hit += 1
 	
 	if enemies_hit == 3:

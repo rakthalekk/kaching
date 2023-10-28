@@ -1,9 +1,7 @@
 class_name QuarterGrenade
 extends CharacterBody2D
 
-@export var speed = 300
-@export var damage := 20
-@export var knockback_force := 400
+@export var attack_data: AttackData
 @export var slow_distance := 50
 @export var friction := 950
 
@@ -18,7 +16,7 @@ var begin_slow = false
 func _ready():
 	var mouse_pos = get_global_mouse_position()
 	direction = global_position.direction_to(mouse_pos)
-	velocity = direction * speed
+	velocity = direction * attack_data.speed
 	
 	goal_distance = global_position.distance_to(mouse_pos)
 	
@@ -37,7 +35,7 @@ func _physics_process(delta):
 	if distance_traveled > goal_distance - slow_distance:
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 	else:
-		velocity = direction * speed
+		velocity = direction * attack_data.speed
 	
 	# note: move_and_slide accepts a PRE-delta velocity, so no need to multiply it
 	move_and_slide()
@@ -59,5 +57,5 @@ func _on_explosion_timer_timeout():
 
 func _on_explosion_radius_body_entered(body):
 	if body is Enemy:
-		body.yowch(damage)
-		body.take_knockback(global_position, knockback_force)
+		body.yowch(attack_data.damage)
+		body.take_knockback(global_position, attack_data.knockback_force)

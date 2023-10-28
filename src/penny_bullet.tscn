@@ -1,11 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://btaip56737vi1"]
+[gd_scene load_steps=4 format=3 uid="uid://btaip56737vi1"]
 
 [ext_resource type="Script" path="res://src/penny_bullet.gd" id="1_ddrm5"]
+[ext_resource type="Script" path="res://src/attack_data.gd" id="2_747jd"]
+
+[sub_resource type="Resource" id="Resource_cv226"]
+script = ExtResource("2_747jd")
+speed = 500
+damage = 1
+knockback_force = 100
+cost = 1
+cooldown = 0.3
 
 [node name="PennyBullet" type="RayCast2D"]
 target_position = Vector2(0, 0)
 collision_mask = 17
 script = ExtResource("1_ddrm5")
+attack_data = SubResource("Resource_cv226")
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(0, 0)

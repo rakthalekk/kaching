@@ -38,6 +38,11 @@ var dollar_fragments = 0
 # Reference to the HUD
 @onready var hud = $UI/HUD as HUD
 
+# Currently equipped 
+@onready var penny_equip = PENNY_BULLET
+@onready var dime_equip = DIME_BULLET
+@onready var quarter_equip = QUARTER_GRENADE
+
 
 func _ready():
 	hud.show()
@@ -67,32 +72,34 @@ func _process(delta):
 	if Input.is_action_pressed("penny"):
 		# If this coin is a penny, attempt to shoot a penny
 		if pennies > 0 and $PennyCooldown.time_left == 0:
-			pennies -= 1
-			$PennyCooldown.start()
-			
 			var shoot_vector = get_global_mouse_position() - global_position
-			var to_shoot = PENNY_BULLET.instantiate() as PennyBullet
+			var to_shoot = penny_equip.instantiate() as PennyBullet
 			to_shoot.set_direction(shoot_vector.normalized())
 			to_shoot.position = self.position
 			get_parent().add_child(to_shoot)
+			
+			pennies -= to_shoot.attack_data.cost
+			$PennyCooldown.start(to_shoot.attack_data.cooldown)
+		
 	if Input.is_action_pressed("dime"):
 		if dimes > 0 and $DimeCooldown.time_left == 0:
-			dimes -= 1
-			$DimeCooldown.start()
-			
 			var shoot_vector = get_global_mouse_position() - global_position
-			var to_shoot = DIME_BULLET.instantiate()
+			var to_shoot = dime_equip.instantiate()
 			to_shoot.direction = shoot_vector.normalized()
 			to_shoot.position = self.position
 			get_parent().add_child(to_shoot)
+			
+			dimes -= to_shoot.attack_data.cost
+			$DimeCooldown.start(to_shoot.attack_data.cooldown)
+		
 	if Input.is_action_pressed("quarter"):
 		if quarters > 0 and $QuarterCooldown.time_left == 0:
-			quarters -= 1
-			$QuarterCooldown.start()
-			
-			var to_shoot = QUARTER_GRENADE.instantiate()
+			var to_shoot = quarter_equip.instantiate()
 			to_shoot.position = self.position
 			get_parent().add_child(to_shoot)
+			
+			quarters -= to_shoot.attack_data.cost
+			$QuarterCooldown.start(to_shoot.attack_data.cooldown)
 		
 	hud.update_coins()
 		

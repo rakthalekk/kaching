@@ -1,7 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://dlyn3xqk2i2pe"]
+[gd_scene load_steps=11 format=3 uid="uid://dlyn3xqk2i2pe"]
 
 [ext_resource type="Script" path="res://src/enemy.gd" id="1_3idc8"]
 [ext_resource type="Texture2D" uid="uid://it8hjt58tya5" path="res://icon.svg" id="1_yk6qf"]
+[ext_resource type="Script" path="res://src/attack_data.gd" id="2_qj4a5"]
+
+[sub_resource type="Resource" id="Resource_ulfku"]
+script = ExtResource("2_qj4a5")
+speed = 0
+damage = 1
+knockback_force = 200
+cost = 0
+cooldown = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_75bix"]
 size = Vector2(320, 180)
@@ -99,6 +108,7 @@ _data = {
 collision_layer = 16
 motion_mode = 1
 script = ExtResource("1_3idc8")
+attack_data = SubResource("Resource_ulfku")
 speed = 75
 max_health = 5
 
