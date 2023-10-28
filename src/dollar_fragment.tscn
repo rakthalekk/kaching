@@ -1,15 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://cob8mgfxhfcs2"]
 
 [ext_resource type="Texture2D" uid="uid://it8hjt58tya5" path="res://icon.svg" id="1_23yek"]
-[ext_resource type="Script" path="res://src/coin.gd" id="1_t1lwy"]
+[ext_resource type="Script" path="res://src/dollar_fragment.gd" id="1_jeacp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vs5hl"]
 size = Vector2(12, 12)
 
-[node name="Coin" type="Area2D"]
+[node name="DollarFragment" type="Area2D"]
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("1_t1lwy")
+script = ExtResource("1_jeacp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_vs5hl")

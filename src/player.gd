@@ -22,8 +22,6 @@ const QUARTER_GRENADE = preload("res://src/quarter_grenade.tscn")
 
 ### LOCAL VARS
 
-
-
 # Player's current active coin
 var active_coin = "P"
 
@@ -33,6 +31,7 @@ var nickels := 0
 var dimes := 300
 var quarters := 300
 
+var dollar_fragments = 0
 
 ### ONREADY VARS
 
@@ -50,20 +49,17 @@ func _physics_process(delta):
 	# Get the input direction as a normalized vector
 	direction = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down")).normalized()
 	
-	# Calculates velocity and applies it to player
-	velocity = direction * speed
-	move_and_slide()
+	handle_movement(delta)
 
 
-func add_coin():
-	pennies += 1
-	hud.update_coins()
+func add_dollar_fragment(num: int = 1):
+	dollar_fragments += num
+	hud.update_dollar_fragments()
 
 
 func yowch(damage: int):
 	super(damage)
 	$EffectsAnimation.play("hurt")
-	
 
 
 func _process(delta):

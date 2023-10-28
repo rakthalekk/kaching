@@ -15,3 +15,7 @@ func update_coins():
 	$Coins/Nickels.text = "N: %d" % player.nickels
 	$Coins/Dimes.text = "D: %d" % player.dimes
 	$Coins/Quarters.text = "Q: %d" % player.quarters
+
+
+func update_dollar_fragments():
+	$Coins/DollarFragments.text = "Dollar Fragments: %d" % player.dollar_fragments

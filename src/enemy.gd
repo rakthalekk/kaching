@@ -4,23 +4,39 @@ extends Actor
 var chase = false
 var player = null
 
+@export var knockback_force = 200
+
+
+# Reference to penny bullet instance that player can instantiate
+const DOLLAR_FRAGMENT = preload("res://src/dollar_fragment.tscn")
 
 func _physics_process(delta):
 	if chase && !dead:
 		direction = (player.position - position).normalized()
-		velocity = direction * speed
-		move_and_slide()
+	else:
+		direction = Vector2.ZERO
+	
+	handle_movement(delta)
+
 
 func _on_detection_body_entered(body):
 	if body is Player:
 		player = body
 		chase = true
-		
+
+
 func die():
-	$AnimationPlayer.play("die")
-	dead = true
-	await $AnimationPlayer.animation_finished
-	super()
+	if !dead:
+		$AnimationPlayer.play("die")
+		dead = true
+		await $AnimationPlayer.animation_finished
+		
+		var dollar = DOLLAR_FRAGMENT.instantiate()
+		dollar.global_position = global_position
+		get_parent().add_child(dollar)
+		
+		super()
+
 
 func _on_detection_body_exited(body):
 	player = null
@@ -28,5 +44,6 @@ func _on_detection_body_exited(body):
 
 
 func _on_hitbox_body_entered(body):
-	if body is Player:
+	if body is Player and !knockback:
 		body.yowch(1)
+		body.take_knockback(global_position, knockback_force)

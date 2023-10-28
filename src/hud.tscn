@@ -40,3 +40,9 @@ text = "D: 0"
 [node name="Quarters" type="Label" parent="Coins"]
 layout_mode = 2
 text = "Q: 0"
+
+[node name="DollarFragments" type="Label" parent="Coins"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+text = "Dollar Fragments: 0"

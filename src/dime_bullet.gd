@@ -2,7 +2,8 @@ class_name DimeBullet
 extends CharacterBody2D
 
 @export var speed = 300
-@export var damage := 5
+@export var damage := 3
+@export var knockback_force := 50
 
 var direction: Vector2
 
@@ -32,7 +33,8 @@ func _on_timer_timeout():
 
 func _on_hitbox_body_entered(body):
 	if body is Enemy:
-		body.yowch(3)
+		body.yowch(damage)
+		body.take_knockback(global_position, knockback_force)
 		enemies_hit += 1
 	
 	if enemies_hit == 3:

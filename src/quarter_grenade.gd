@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @export var speed = 300
 @export var damage := 20
+@export var knockback_force := 400
 @export var slow_distance := 50
 @export var friction := 950
 
@@ -58,4 +59,5 @@ func _on_explosion_timer_timeout():
 
 func _on_explosion_radius_body_entered(body):
 	if body is Enemy:
-		body.yowch(20)
+		body.yowch(damage)
+		body.take_knockback(global_position, knockback_force)

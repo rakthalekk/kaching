@@ -4,6 +4,7 @@ extends RayCast2D
 
 @export var distance := 500
 @export var damage := 1
+@export var knockback_force := 100
 
 var direction = Vector2.ZERO
 
@@ -16,7 +17,8 @@ func _process(delta):
 		$Line2D.add_point(to_local(get_collision_point()))
 		enabled = false
 		if collider is Enemy:
-			collider.yowch(1)
+			collider.yowch(damage)
+			collider.take_knockback(get_collision_point(), knockback_force)
 	elif enabled && frames_since_init > 3:
 		print("no hit")
 		$Line2D.add_point(target_position)

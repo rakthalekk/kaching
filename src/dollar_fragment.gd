@@ -13,6 +13,6 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body is Player:
-		body.add_coin()
+		body.add_dollar_fragment()
 	
 	queue_free()
