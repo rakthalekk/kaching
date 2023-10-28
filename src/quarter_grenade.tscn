@@ -1,16 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4dhflht4se8t"]
+[gd_scene load_steps=5 format=3 uid="uid://c4dhflht4se8t"]
 
 [ext_resource type="Texture2D" uid="uid://it8hjt58tya5" path="res://icon.svg" id="1_b340s"]
 [ext_resource type="Script" path="res://src/quarter_grenade.gd" id="1_jpex4"]
-[ext_resource type="Script" path="res://src/attack_data.gd" id="2_knvk4"]
-
-[sub_resource type="Resource" id="Resource_he158"]
-script = ExtResource("2_knvk4")
-speed = 300
-damage = 20
-knockback_force = 400
-cost = 1
-cooldown = 3.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c0u01"]
 size = Vector2(12, 12)
@@ -22,7 +13,12 @@ radius = 63.0
 collision_layer = 8
 motion_mode = 1
 script = ExtResource("1_jpex4")
-attack_data = SubResource("Resource_he158")
+speed = 300
+damage = 20
+knockback_force = 350
+cost = 1
+cooldown = 3.0
+duration = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_c0u01")
@@ -30,10 +26,6 @@ shape = SubResource("RectangleShape2D_c0u01")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_b340s")
-
-[node name="DetonationTimer" type="Timer" parent="."]
-one_shot = true
-autostart = true
 
 [node name="ExplosionRadius" type="Area2D" parent="."]
 visible = false
@@ -53,6 +45,4 @@ texture = ExtResource("1_b340s")
 wait_time = 0.5
 one_shot = true
 
-[connection signal="timeout" from="DetonationTimer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="ExplosionRadius" to="." method="_on_explosion_radius_body_entered"]
-[connection signal="timeout" from="ExplosionRadius/ExplosionTimer" to="." method="_on_explosion_timer_timeout"]

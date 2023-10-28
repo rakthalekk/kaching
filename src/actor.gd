@@ -31,7 +31,7 @@ func handle_movement(delta):
 	if knockback:
 		velocity += knockback_velocity
 		knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, delta * knockback_friction)
-		if velocity.length() <= 0:
+		if knockback_velocity.length() <= 0:
 			knockback = false
 	
 	move_and_slide()

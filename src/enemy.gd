@@ -4,7 +4,8 @@ extends Actor
 var chase = false
 var player = null
 
-@export var attack_data: AttackData
+@export var damage := 1
+@export var knockback_force := 200
 
 
 # Reference to penny bullet instance that player can instantiate
@@ -45,5 +46,5 @@ func _on_detection_body_exited(body):
 
 func _on_hitbox_body_entered(body):
 	if body is Player and !knockback:
-		body.yowch(attack_data.damage)
-		body.take_knockback(global_position, attack_data.knockback_force)
+		body.yowch(damage)
+		body.take_knockback(global_position, knockback_force)

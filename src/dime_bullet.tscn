@@ -1,16 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcskkmslmcnrm"]
+[gd_scene load_steps=5 format=3 uid="uid://bcskkmslmcnrm"]
 
 [ext_resource type="Script" path="res://src/dime_bullet.gd" id="1_s2fak"]
-[ext_resource type="Script" path="res://src/attack_data.gd" id="2_87uky"]
 [ext_resource type="Texture2D" uid="uid://it8hjt58tya5" path="res://icon.svg" id="2_x333k"]
-
-[sub_resource type="Resource" id="Resource_pkwsc"]
-script = ExtResource("2_87uky")
-speed = 300
-damage = 4
-knockback_force = 50
-cost = 1
-cooldown = 0.5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epy0e"]
 size = Vector2(6, 6)
@@ -22,7 +13,12 @@ radius = 5.0
 collision_layer = 8
 motion_mode = 1
 script = ExtResource("1_s2fak")
-attack_data = SubResource("Resource_pkwsc")
+speed = 300
+damage = 4
+knockback_force = 50
+cost = 1
+cooldown = 0.5
+duration = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.0627451, 1, 0, 1)
@@ -32,11 +28,6 @@ texture = ExtResource("2_x333k")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_epy0e")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-autostart = true
-
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 16
@@ -44,5 +35,4 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_67s5n")
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
