@@ -3,11 +3,11 @@ extends CharacterBody2D
 
 @export var speed = 300
 @export var damage := 20
-@export var slow_distance := 100
-@export var friction := 450
+@export var slow_distance := 50
+@export var friction := 950
 
 var direction: Vector2
-var current_friction = friction 
+var current_friction = friction
 var goal_distance: int
 var distance_traveled: int
 
@@ -20,6 +20,9 @@ func _ready():
 	velocity = direction * speed
 	
 	goal_distance = global_position.distance_to(mouse_pos)
+	
+	if goal_distance < slow_distance:
+		friction *= slow_distance * 1.0 / goal_distance
 
 
 func _physics_process(delta):

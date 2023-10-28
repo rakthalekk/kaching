@@ -41,6 +41,7 @@ var quarters := 300
 
 
 func _ready():
+	hud.show()
 	hud.player = self
 	hud.update_coins()
 
@@ -57,6 +58,12 @@ func _physics_process(delta):
 func add_coin():
 	pennies += 1
 	hud.update_coins()
+
+
+func yowch(damage: int):
+	super(damage)
+	$EffectsAnimation.play("hurt")
+	
 
 
 func _process(delta):
@@ -91,7 +98,7 @@ func _process(delta):
 			to_shoot.position = self.position
 			get_parent().add_child(to_shoot)
 		
-		hud.update_coins()
+	hud.update_coins()
 		
 	if Input.is_action_pressed("equip_menu"):
 		var equip_menu = preload("res://src/equip_menu.tscn").instantiate()

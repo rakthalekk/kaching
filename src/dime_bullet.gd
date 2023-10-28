@@ -1,7 +1,7 @@
 class_name DimeBullet
 extends CharacterBody2D
 
-@export var speed = 800
+@export var speed = 300
 @export var damage := 5
 
 var direction: Vector2
@@ -30,10 +30,10 @@ func _on_timer_timeout():
 	queue_free()
 
 
-func _on_body_entered(body):
-	# If the body is Enemy, deal damage to it. Regardless, destroy bullet after
-	# if body is Enemy:
-		# kill enemy
-		# enemies_hit += 1
-		# if enemies_hit >= 3, queue_free()
-	queue_free()
+func _on_hitbox_body_entered(body):
+	if body is Enemy:
+		body.yowch(3)
+		enemies_hit += 1
+	
+	if enemies_hit == 3:
+		queue_free()

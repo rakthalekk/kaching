@@ -13,7 +13,6 @@ var frames_since_init = 0
 func _process(delta):
 	var collider = get_collider()
 	if is_colliding():
-		print(get_collider())
 		$Line2D.add_point(to_local(get_collision_point()))
 		enabled = false
 		if collider is Enemy:
