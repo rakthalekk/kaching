@@ -41,11 +41,13 @@ var quarters := 300
 
 # Reference to the HUD
 @onready var hud = $UI/HUD as HUD
+@onready var equip_menu = $UI/EquipMenu as EquipMenu
 
 
 func _ready():
 	hud.player = self
 	hud.update_coins()
+	equip_menu.player = self
 
 
 func _physics_process(delta):
@@ -105,8 +107,7 @@ func _process(delta):
 		active_coin = COIN_TYPES[(COIN_TYPES.find(active_coin) + 1) % COIN_TYPES.size()]
 		hud.update_active_coin()
 		
-	if Input.is_action_pressed("equip_menu"):
-		var equip_menu = preload("res://src/equip_menu.tscn").instantiate()
-		get_node("UI/HUD").add_child(equip_menu)
-		pass # load the equip menu "scene" as a child of camera? or player? 
+	if Input.is_action_just_pressed("equip_menu"):
+		equip_menu.visible = !equip_menu.visible
+		equip_menu.populate_player_data()
 
