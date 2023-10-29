@@ -10,5 +10,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	follow_camera.position = lerp(follow_camera.position, player.position, delta * 3)
-	pass
+	if is_instance_valid(player):
+		follow_camera.position = lerp(follow_camera.position, player.position, delta * 5)
