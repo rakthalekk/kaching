@@ -46,3 +46,8 @@ func take_knockback(origin: Vector2, knockback_force: int):
 	var kb_direction = (global_position - origin).normalized()
 	knockback_velocity = kb_direction * knockback_force
 	velocity = knockback_velocity
+
+func take_dir_knockback(dir: Vector2, force: int):
+	knockback = true
+	knockback_velocity = dir * force
+	velocity = knockback_velocity

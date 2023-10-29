@@ -19,8 +19,14 @@ const PENNY_SHOTGUN = preload("res://src/penny_shotgun.tscn")
 # Reference to dime bullet instance that player can instantiate
 const DIME_BULLET = preload("res://src/dime_bullet.tscn")
 
+# Reference to dime laser instance that player can instantiate
+const DIME_LASER = preload("res://src/dime_laser.tscn")
+
 # Reference to dime bullet instance that player can instantiate
 const QUARTER_GRENADE = preload("res://src/quarter_grenade.tscn")
+
+# Reference to quarter disk instance that player can instantiate
+const QUARTER_DISK = preload("res://src/quarter_disk.tscn")
 
 
 ### LOCAL VARS
@@ -43,8 +49,8 @@ var dollars = 0
 
 # Currently equipped 
 @onready var penny_equip = PENNY_BULLET
-@onready var dime_equip = DIME_BULLET
-@onready var quarter_equip = QUARTER_GRENADE
+@onready var dime_equip = DIME_LASER
+@onready var quarter_equip = QUARTER_DISK
 
 
 func _ready():
