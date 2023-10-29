@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://c2ub8vdlon1lm"]
+[gd_scene load_steps=2 format=3 uid="uid://devsngfnkumin"]
 
 [ext_resource type="Script" path="res://src/hud.gd" id="1_jqu18"]
 
@@ -46,3 +46,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 8
 text = "Dollar Fragments: 0"
+
+[node name="Dollars" type="Label" parent="Coins"]
+layout_mode = 2
+text = "Dollars: 0"

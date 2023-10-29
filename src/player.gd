@@ -32,6 +32,7 @@ var dimes := 300
 var quarters := 300
 
 var dollar_fragments = 0
+var dollars = 0
 
 
 ### ONREADY VARS
@@ -62,6 +63,9 @@ func _physics_process(delta):
 
 func add_dollar_fragment(num: int = 1):
 	dollar_fragments += num
+	while dollar_fragments >= 3:
+		dollar_fragments -= 3
+		dollars += 1
 	hud.update_dollar_fragments()
 
 
@@ -77,6 +81,9 @@ func create_attack(ATTACK: PackedScene):
 	attack.position = self.position
 	get_parent().add_child(attack)
 	return attack
+
+
+
 
 
 func _process(delta):
@@ -109,3 +116,19 @@ func _process(delta):
 		equip_menu.visible = !equip_menu.visible
 		equip_menu.populate_player_data()
 
+	
+	if Input.is_action_just_pressed("interact"):
+		%InteractableArea.monitoring = true
+		$InteractableArea/InteractTimer.start()
+
+
+func _on_interactable_area_body_entered(body):
+	if body is VendingMachine:
+		var vending_menu = preload("res://src/vending_menu.tscn").instantiate()
+		get_node("UI/HUD").add_child(vending_menu)
+		get_tree().paused = true
+
+
+
+func _on_interact_timer_timeout():
+	%InteractableArea.monitoring = false
