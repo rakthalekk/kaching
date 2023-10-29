@@ -11,9 +11,10 @@ func _process(delta):
 	if raycast.is_colliding():
 		$Line2D.add_point(to_local(raycast.get_collision_point()))
 		raycast.enabled = false
-		if collider is Enemy:
-			collider.yowch(damage)
-			collider.take_knockback(raycast.get_collision_point(), knockback_force)
+		if collider is Hurtbox:
+			var enemy = collider.actor
+			enemy.yowch(damage)
+			enemy.take_knockback(raycast.get_collision_point(), knockback_force)
 	elif raycast.enabled && frames_since_init > 3:
 		$Line2D.add_point(raycast.target_position)
 		raycast.enabled = false

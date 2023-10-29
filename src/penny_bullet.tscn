@@ -22,6 +22,7 @@ shape = SubResource("CircleShape2D_03nkt")
 [node name="Raycast" type="RayCast2D" parent="."]
 target_position = Vector2(0, 0)
 collision_mask = 17
+collide_with_areas = true
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(0, 0)

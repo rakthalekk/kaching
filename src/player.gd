@@ -39,6 +39,8 @@ var dollar_fragments = 0
 # Reference to the HUD
 @onready var hud = $UI/HUD as HUD
 
+@onready var hurtbox = $Hurtbox as Hurtbox
+
 # Currently equipped 
 @onready var penny_equip = PENNY_BULLET
 @onready var dime_equip = DIME_BULLET
@@ -49,6 +51,8 @@ func _ready():
 	hud.show()
 	hud.player = self
 	hud.update_coins()
+	
+	hurtbox.actor = self
 
 
 func _physics_process(delta):
