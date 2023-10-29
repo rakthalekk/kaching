@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4dhflht4se8t"]
+[gd_scene load_steps=5 format=3 uid="uid://ct2molnfhouao"]
 
 [ext_resource type="Texture2D" uid="uid://it8hjt58tya5" path="res://icon.svg" id="1_b340s"]
 [ext_resource type="Script" path="res://src/quarter_grenade.gd" id="1_jpex4"]

@@ -1,6 +1,5 @@
+class_name VendingMachine
 extends StaticBody2D
-
-var player_in_range = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -10,24 +9,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if player_in_range && Input.is_action_just_pressed("interact"):
-		# Go into menu scene
-		print("amonguss")
-
-
-
-
-func _on_interactable_area_body_entered(body):
-	if body is Player:
-		player_in_range = true
-		
-
-
-
-func _on_interactable_area_body_exited(body):
-	if body is Player:
-		player_in_range = false
-
+	pass
 
 # idk how to grab player, this could just be a function in player but how would I call it
 func return_coins(player: Player, change: int):

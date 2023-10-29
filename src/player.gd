@@ -77,6 +77,9 @@ func create_attack(ATTACK: PackedScene):
 	return attack
 
 
+
+
+
 func _process(delta):
 	# Check if the player has input the click action
 	if Input.is_action_pressed("penny"):
@@ -107,3 +110,19 @@ func _process(delta):
 		var equip_menu = preload("res://src/equip_menu.tscn").instantiate()
 		get_node("UI/HUD").add_child(equip_menu)
 		pass # load the equip menu "scene" as a child of camera? or player? 
+	
+	if Input.is_action_just_pressed("interact"):
+		%InteractableArea.monitoring = true
+		$InteractableArea/InteractTimer.start()
+
+
+func _on_interactable_area_body_entered(body):
+	if body is VendingMachine:
+		var vending_menu = preload("res://src/vending_menu.tscn").instantiate()
+		get_node("UI/HUD").add_child(vending_menu)
+		get_tree().paused = true
+
+
+
+func _on_interact_timer_timeout():
+	%InteractableArea.monitoring = false

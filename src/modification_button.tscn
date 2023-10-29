@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbdj35k44twst"]
+
+[ext_resource type="Script" path="res://src/modification_button.gd" id="1_gkxgx"]
+
+[node name="Button" type="TextureButton"]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_gkxgx")
