@@ -1,10 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dli126qdy01ey"]
+[gd_scene load_steps=12 format=3 uid="uid://dli126qdy01ey"]
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_awono"]
 [ext_resource type="Texture2D" uid="uid://it8hjt58tya5" path="res://icon.svg" id="1_ya7u0"]
-[ext_resource type="PackedScene" uid="uid://c2ub8vdlon1lm" path="res://src/hud.tscn" id="3_cdex1"]
-[ext_resource type="Script" path="res://src/hurtbox.gd" id="4_ok1mv"]
+[ext_resource type="PackedScene" uid="uid://devsngfnkumin" path="res://src/hud.tscn" id="3_cdex1"]
 [ext_resource type="PackedScene" uid="uid://d3s6y2xg13wjs" path="res://src/equip_menu.tscn" id="4_agvi2"]
+[ext_resource type="Script" path="res://src/hurtbox.gd" id="5_umqfp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xibsx"]
 size = Vector2(12, 6)
@@ -70,8 +70,11 @@ _data = {
 "hurt": SubResource("Animation_tq66x")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vwd2t"]
-size = Vector2(14, 8)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ljf7f"]
+size = Vector2(31, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_up82c"]
+size = Vector2(12, 6)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 34
@@ -119,6 +122,7 @@ libraries = {
 
 [node name="InteractableArea" type="Area2D" parent="."]
 unique_name_in_owner = true
+visible = false
 collision_layer = 0
 collision_mask = 64
 monitoring = false
@@ -131,13 +135,14 @@ shape = SubResource("RectangleShape2D_ljf7f")
 wait_time = 0.1
 one_shot = true
 
-[connection signal="body_entered" from="InteractableArea" to="." method="_on_interactable_area_body_entered"]
-[connection signal="timeout" from="InteractableArea/InteractTimer" to="." method="_on_interact_timer_timeout"]
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("4_ok1mv")
+script = ExtResource("5_umqfp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, 6)
-shape = SubResource("RectangleShape2D_vwd2t")
+shape = SubResource("RectangleShape2D_up82c")
+
+[connection signal="body_entered" from="InteractableArea" to="." method="_on_interactable_area_body_entered"]
+[connection signal="timeout" from="InteractableArea/InteractTimer" to="." method="_on_interact_timer_timeout"]

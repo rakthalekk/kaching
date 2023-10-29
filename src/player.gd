@@ -87,9 +87,6 @@ func create_attack(ATTACK: PackedScene):
 	return attack
 
 
-
-
-
 func _process(delta):
 	# Check if the player has input the click action
 	if Input.is_action_pressed("penny"):

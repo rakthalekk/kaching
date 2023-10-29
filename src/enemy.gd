@@ -75,6 +75,7 @@ func _on_detection_body_exited(body):
 
 
 func _on_hitbox_area_entered(area):
+	print("buyadsadas")
 	if area is Hurtbox and !knockback:
 		var body = area.actor
 		body.yowch(damage)
