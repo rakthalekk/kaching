@@ -2,9 +2,11 @@ class_name VendingMenu
 extends Control
 
 var selected_button : ModButton
+var player : Player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	player = get_parent().get_node("Player")
 	selected_button = null
 
 
@@ -31,8 +33,30 @@ func update_mod_info(button, mod):
 func _on_purchase_button_pressed():
 	if selected_button == null:
 		return
-	# give player the selected modification here
+	if player.dollars < selected_button.modification.cost:
+		# Maybe make some kind of invalid purchase type beat here
+		return
+	player.dollars -= ceil(selected_button.modification.cost)
+	var change = ceil(selected_button.modification.cost) - selected_button.modification.cost
+	# give player the selected modification here and change
+	return_coins(change)
 	selected_button.disabled = true
+
+func return_coins(change: int):
+	# First chdck for how many quarters to give out
+	while change >= 70:
+		# Add quarter to player
+		player.quarters += 1
+		change -= 25
+	while change >= 35:
+		player.dimes += 1
+		change -= 10
+	if change >= 25:
+		player.nickels += 1
+		change -= 5
+	while change > 0:
+		player.pennies += 1
+		change -= 1
 
 
 func _on_exit_button_pressed():

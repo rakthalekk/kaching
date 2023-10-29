@@ -19,3 +19,4 @@ func update_coins():
 
 func update_dollar_fragments():
 	$Coins/DollarFragments.text = "Dollar Fragments: %d" % player.dollar_fragments
+	$Coins/Dollars.text = "Dollars: %d" % player.dollars

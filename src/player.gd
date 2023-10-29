@@ -32,6 +32,7 @@ var dimes := 300
 var quarters := 300
 
 var dollar_fragments = 0
+var dollars = 0
 
 
 ### ONREADY VARS
@@ -60,6 +61,9 @@ func _physics_process(delta):
 
 func add_dollar_fragment(num: int = 1):
 	dollar_fragments += num
+	while dollar_fragments >= 3:
+		dollar_fragments -= 3
+		dollars += 1
 	hud.update_dollar_fragments()
 
 
