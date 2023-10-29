@@ -41,6 +41,8 @@ var dollars = 0
 @onready var hud = $UI/HUD as HUD
 @onready var equip_menu = $UI/EquipMenu as EquipMenu
 
+@onready var hurtbox = $Hurtbox as Hurtbox
+
 # Currently equipped 
 @onready var penny_equip = PENNY_BULLET
 @onready var dime_equip = DIME_BULLET
@@ -51,6 +53,8 @@ func _ready():
 	hud.show()
 	hud.player = self
 	hud.update_coins()
+	
+	hurtbox.actor = self
 	equip_menu.player = self
 
 

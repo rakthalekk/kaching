@@ -45,4 +45,4 @@ texture = ExtResource("1_b340s")
 wait_time = 0.5
 one_shot = true
 
-[connection signal="body_entered" from="ExplosionRadius" to="." method="_on_explosion_radius_body_entered"]
+[connection signal="area_entered" from="ExplosionRadius" to="." method="_on_explosion_radius_area_entered"]

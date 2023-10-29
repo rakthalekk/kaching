@@ -55,7 +55,8 @@ func destroy_self():
 	super()
 
 
-func _on_explosion_radius_body_entered(body):
-	if body is Enemy:
+func _on_explosion_radius_area_entered(area):
+	if area is Hurtbox:
+		var body = area.actor
 		body.yowch(damage)
 		body.take_knockback(global_position, knockback_force)

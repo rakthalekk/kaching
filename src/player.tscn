@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_awono"]
 [ext_resource type="Texture2D" uid="uid://it8hjt58tya5" path="res://icon.svg" id="1_ya7u0"]
-[ext_resource type="PackedScene" uid="uid://devsngfnkumin" path="res://src/hud.tscn" id="3_cdex1"]
+[ext_resource type="PackedScene" uid="uid://c2ub8vdlon1lm" path="res://src/hud.tscn" id="3_cdex1"]
+[ext_resource type="Script" path="res://src/hurtbox.gd" id="4_ok1mv"]
 [ext_resource type="PackedScene" uid="uid://d3s6y2xg13wjs" path="res://src/equip_menu.tscn" id="4_agvi2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xibsx"]
@@ -69,8 +70,8 @@ _data = {
 "hurt": SubResource("Animation_tq66x")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ljf7f"]
-size = Vector2(31, 23)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vwd2t"]
+size = Vector2(14, 8)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 34
@@ -79,13 +80,13 @@ motion_mode = 1
 script = ExtResource("1_awono")
 max_health = 10
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6)
-shape = SubResource("RectangleShape2D_xibsx")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.15)
 texture = ExtResource("1_ya7u0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_xibsx")
 
 [node name="PennyCooldown" type="Timer" parent="."]
 wait_time = 0.3
@@ -132,3 +133,11 @@ one_shot = true
 
 [connection signal="body_entered" from="InteractableArea" to="." method="_on_interactable_area_body_entered"]
 [connection signal="timeout" from="InteractableArea/InteractTimer" to="." method="_on_interact_timer_timeout"]
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_ok1mv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_vwd2t")

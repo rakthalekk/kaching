@@ -10,8 +10,9 @@ func _physics_process(delta):
 	move()
 
 
-func _on_hitbox_body_entered(body):
-	if body is Enemy:
+func _on_hitbox_area_entered(area):
+	if area is Hurtbox:
+		var body = area.actor
 		body.yowch(damage)
 		body.take_knockback(global_position, knockback_force)
 		enemies_hit += 1
