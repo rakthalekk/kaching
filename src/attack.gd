@@ -8,6 +8,11 @@ extends CharacterBody2D
 @export var cooldown: float
 @export var duration: float
 
+var speed_modifier: int
+var damage_modifier: int
+var knockback_modifier: int
+var duration_modifier: float
+
 var direction = Vector2.ZERO
 
 @onready var active_timer = Timer.new()
@@ -15,13 +20,23 @@ var direction = Vector2.ZERO
 func _ready():
 	add_child(active_timer)
 	active_timer.connect("timeout", destroy_self)
-	active_timer.start(duration)
+	active_timer.start(duration + duration_modifier)
 
 
 func move():
 	# Move the bullet based on given direction and set speed
-	velocity = direction * speed
+	velocity = direction * (speed + speed_modifier)
 	move_and_slide()
+
+
+func populate_modifiers(mod: Player.ModifierStruct):
+	speed_modifier = mod.stat_modifiers[CoinStatModification.MODIFY_STAT.SPEED]
+	damage_modifier = mod.stat_modifiers[CoinStatModification.MODIFY_STAT.DAMAGE]
+	knockback_modifier = mod.stat_modifiers[CoinStatModification.MODIFY_STAT.KNOCKBACK]
+	duration_modifier = mod.stat_modifiers[CoinStatModification.MODIFY_STAT.DURATION]
+	
+	# Restars timer with new duration modifier
+	active_timer.start(duration + duration_modifier)
 
 
 func set_direction(dir: Vector2):

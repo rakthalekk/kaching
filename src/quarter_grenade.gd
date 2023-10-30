@@ -4,8 +4,6 @@ extends Attack
 @export var slow_distance := 50
 @export var friction := 950
 
-# 300, 20, 400, 1, 3, 1
-
 var current_friction = friction
 var goal_distance: int
 var distance_traveled: int
@@ -17,7 +15,7 @@ var begin_slow = false
 func _ready():
 	var mouse_pos = get_global_mouse_position()
 	direction = global_position.direction_to(mouse_pos)
-	velocity = direction * speed
+	velocity = direction * (speed + speed_modifier)
 	
 	goal_distance = global_position.distance_to(mouse_pos)
 	
@@ -37,7 +35,7 @@ func _physics_process(delta):
 	if distance_traveled > goal_distance - slow_distance:
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 	else:
-		velocity = direction * speed
+		velocity = direction * (speed + speed_modifier)
 	
 	# note: move_and_slide accepts a PRE-delta velocity, so no need to multiply it
 	move_and_slide()
@@ -58,5 +56,5 @@ func destroy_self():
 func _on_explosion_radius_area_entered(area):
 	if area is Hurtbox:
 		var body = area.actor
-		body.yowch(damage)
-		body.take_knockback(global_position, knockback_force)
+		body.yowch(damage + damage_modifier)
+		body.take_knockback(global_position, knockback_force + knockback_modifier)
