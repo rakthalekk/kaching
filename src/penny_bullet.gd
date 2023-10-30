@@ -1,24 +1,23 @@
 class_name PennyBullet
-extends RayCast2D
-
-
-@export var distance := 500
-@export var damage := 1
-
-var direction = Vector2.ZERO
+extends Attack
 
 var frames_since_init = 0
 
+@onready var raycast = $Raycast as RayCast2D
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if is_colliding():
-		print(get_collider())
-		$Line2D.add_point(to_local(get_collision_point()))
-		enabled = false
-	elif enabled && frames_since_init > 3:
-		print("no hit")
-		$Line2D.add_point(target_position)
-		enabled = false
+	var collider = raycast.get_collider()
+	if raycast.is_colliding():
+		$Line2D.add_point(to_local(raycast.get_collision_point()))
+		raycast.enabled = false
+		if collider is Hurtbox:
+			var enemy = collider.actor
+			enemy.yowch(damage + damage_modifier)
+			enemy.take_knockback(raycast.get_collision_point(), knockback_force + knockback_modifier)
+	elif raycast.enabled && frames_since_init > 3:
+		$Line2D.add_point(raycast.target_position)
+		raycast.enabled = false
 	
 	frames_since_init += 1
 	
@@ -26,9 +25,7 @@ func _process(delta):
 
 
 func set_direction(dir: Vector2):
+	await ready
 	direction = dir
-	target_position = direction * distance
+	raycast.target_position = direction * (speed + speed_modifier)
 
-
-func _on_fade_timer_timeout():
-	queue_free()

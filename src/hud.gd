@@ -17,5 +17,6 @@ func update_coins():
 	$Coins/Quarters.text = "Q: %d" % player.quarters
 
 
-func update_active_coin():
-	$Coins/ActiveCoin.text = "Active: " + player.active_coin
+func update_dollar_fragments():
+	$Coins/DollarFragments.text = "Dollar Fragments: %d" % player.dollar_fragments
+	$Coins/Dollars.text = "Dollars: %d" % player.dollars

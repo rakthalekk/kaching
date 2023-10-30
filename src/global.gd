@@ -1,0 +1,3 @@
+extends Node2D
+
+enum COIN_TYPE {NONE, PENNY, NICKEL, DIME, QUARTER}

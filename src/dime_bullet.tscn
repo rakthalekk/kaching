@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcskkmslmcnrm"]
+[gd_scene load_steps=5 format=3 uid="uid://b716meldeocff"]
 
 [ext_resource type="Script" path="res://src/dime_bullet.gd" id="1_s2fak"]
 [ext_resource type="Texture2D" uid="uid://it8hjt58tya5" path="res://icon.svg" id="2_x333k"]
@@ -11,7 +11,14 @@ radius = 5.0
 
 [node name="DimeBullet" type="CharacterBody2D"]
 collision_layer = 8
+motion_mode = 1
 script = ExtResource("1_s2fak")
+speed = 300
+damage = 4
+knockback_force = 50
+cost = 1
+cooldown = 0.5
+duration = 2.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.0627451, 1, 0, 1)
@@ -21,16 +28,11 @@ texture = ExtResource("2_x333k")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_epy0e")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
-one_shot = true
-autostart = true
-
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 0
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_67s5n")
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

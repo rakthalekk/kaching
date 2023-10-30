@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://d00qm3pieact7"]
+
+[ext_resource type="Script" path="res://src/vending_machine.gd" id="1_2esb1"]
+[ext_resource type="Texture2D" path="res://assets/vending machine sprite.png" id="2_uiqkw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ci25"]
+size = Vector2(16, 15)
+
+[node name="Vending Machine" type="StaticBody2D"]
+collision_layer = 65
+collision_mask = 0
+script = ExtResource("1_2esb1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_uiqkw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7.5)
+shape = SubResource("RectangleShape2D_1ci25")

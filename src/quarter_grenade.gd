@@ -1,39 +1,41 @@
 class_name QuarterGrenade
-extends CharacterBody2D
+extends Attack
 
-@export var speed = 300
-@export var damage := 20
-@export var slow_distance := 100
-@export var friction := 450
+@export var slow_distance := 50
+@export var friction := 950
 
-var direction: Vector2
-var current_friction = friction 
+var current_friction = friction
 var goal_distance: int
 var distance_traveled: int
 
 var timeout = false
 var begin_slow = false
 
+
 func _ready():
 	var mouse_pos = get_global_mouse_position()
 	direction = global_position.direction_to(mouse_pos)
-	velocity = direction * speed
+	velocity = direction * (speed + speed_modifier)
 	
 	goal_distance = global_position.distance_to(mouse_pos)
+	
+	if goal_distance < slow_distance:
+		friction *= slow_distance * 1.0 / goal_distance
+	
+	super()
+
+
+func set_direction(dir: Vector2):
+	pass
 
 
 func _physics_process(delta):
-	for i in range(get_slide_collision_count()):
-		var collision = get_slide_collision(i)
-		if collision.get_collider() is TileMap:
-			direction = direction.bounce(collision.get_normal())
-			velocity = velocity.length() * direction
-			break
+	check_bounce()
 	
 	if distance_traveled > goal_distance - slow_distance:
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
 	else:
-		velocity = direction * speed
+		velocity = direction * (speed + speed_modifier)
 	
 	# note: move_and_slide accepts a PRE-delta velocity, so no need to multiply it
 	move_and_slide()
@@ -41,13 +43,28 @@ func _physics_process(delta):
 	distance_traveled += (velocity * delta).length()
 
 
-func _on_timer_timeout():
+func destroy_self():
 	direction = Vector2.ZERO
 	velocity = Vector2.ZERO
 	$ExplosionRadius/CollisionShape2D.disabled = false
 	$ExplosionRadius.visible = true
+	$Sprite2D.hide()
 	$ExplosionRadius/ExplosionTimer.start()
+	
+	$ExplosionRadius/Sprite2D.play("default")
+	$Boom.play()
+	
+	await $ExplosionRadius/ExplosionTimer.timeout
+	
+	$ExplosionRadius/CollisionShape2D.disabled = true
+	
+	await $Boom.finished
+	
+	super()
 
 
-func _on_explosion_timer_timeout():
-	queue_free()
+func _on_explosion_radius_area_entered(area):
+	if area is Hurtbox:
+		var body = area.actor
+		body.yowch(damage + damage_modifier)
+		body.take_knockback(global_position, knockback_force + knockback_modifier)
