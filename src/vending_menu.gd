@@ -19,7 +19,7 @@ func add_mod(mod):
 	var modification_button = preload("res://src/modification_button.tscn").instantiate()
 	modification_button.modification = mod
 	%ButtonContainer.add_child(modification_button)
-
+	
 func update_mod_info(button, mod):
 	selected_button = button
 	%ModName.text = mod.name
