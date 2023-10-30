@@ -44,7 +44,6 @@ func _physics_process(delta):
 
 
 func destroy_self():
-	print("huis")
 	direction = Vector2.ZERO
 	velocity = Vector2.ZERO
 	$ExplosionRadius/CollisionShape2D.disabled = false

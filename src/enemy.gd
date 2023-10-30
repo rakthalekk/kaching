@@ -10,14 +10,18 @@ var anim_suffix = ""
 @export var knockback_force := 200
 
 @export var cheeked_up : Texture
+@export var female : Texture
 
 # Reference to penny bullet instance that player can instantiate
 const DOLLAR_FRAGMENT = preload("res://src/dollar_fragment.tscn")
 
 
 func _ready():
-	if randf() < 0.1:
+	var rand = randf()
+	if rand < 0.1:
 		$Sprite.texture = cheeked_up
+	elif rand < 0.6:
+		$Sprite.texture = female
 	
 	hurtbox.actor = self
 	super()
@@ -74,7 +78,6 @@ func _on_detection_body_exited(body):
 
 
 func _on_hitbox_area_entered(area):
-	print("buyadsadas")
 	if area is Hurtbox and !knockback:
 		var body = area.actor
 		body.yowch(damage)

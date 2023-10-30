@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://dlyn3xqk2i2pe"]
+[gd_scene load_steps=19 format=3 uid="uid://dlyn3xqk2i2pe"]
 
 [ext_resource type="Script" path="res://src/enemy.gd" id="1_3idc8"]
 [ext_resource type="Texture2D" uid="uid://co47rjwyts3w8" path="res://assets/zombie-thick.png" id="2_fdm87"]
 [ext_resource type="Texture2D" uid="uid://byyrh3ccicdn2" path="res://assets/zombie.png" id="2_y2i0p"]
+[ext_resource type="Texture2D" uid="uid://bq4s1g2phcltc" path="res://assets/zombie-female.png" id="3_cv4or"]
 [ext_resource type="Script" path="res://src/hurtbox.gd" id="4_4hwyv"]
 [ext_resource type="Texture2D" uid="uid://cn3y2ngyen2kv" path="res://assets/dropshadow.png" id="5_xcv3i"]
 
@@ -223,6 +224,7 @@ collision_layer = 16
 motion_mode = 1
 script = ExtResource("1_3idc8")
 cheeked_up = ExtResource("2_fdm87")
+female = ExtResource("3_cv4or")
 speed = 75
 max_health = 5
 
@@ -230,6 +232,9 @@ max_health = 5
 position = Vector2(0, 9.5)
 scale = Vector2(0.1, 0.15)
 shape = SubResource("RectangleShape2D_3q8vv")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+texture = ExtResource("5_xcv3i")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 y_sort_enabled = true
@@ -266,9 +271,6 @@ script = ExtResource("4_4hwyv")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_2psno")
-
-[node name="Shadow" type="Sprite2D" parent="."]
-texture = ExtResource("5_xcv3i")
 
 [connection signal="child_entered_tree" from="CollisionShape2D" to="." method="_on_collision_shape_2d_child_entered_tree"]
 [connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]
