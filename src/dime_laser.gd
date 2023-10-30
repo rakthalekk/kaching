@@ -1,6 +1,15 @@
 class_name DimeLaser
 extends Attack
 
+
+func _ready():
+	super()
+	
+	$Pivot/LaserStart.play("default")
+	$Pivot/Laser.play("default")
+	$Pivot/Laser2.play("default")
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
@@ -9,10 +18,9 @@ func _process(delta):
 func set_direction(dir: Vector2):
 	await ready
 	direction = dir
-	$Line2D.add_point(direction * speed)
 	%BeamShape.shape.b =  direction * speed
 	
-	
+	$Pivot.rotation_degrees = rad_to_deg(atan2(dir.y, dir.x))
 
 
 func _on_laser_hitbox_area_entered(area):
