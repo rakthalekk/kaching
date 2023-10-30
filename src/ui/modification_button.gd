@@ -4,9 +4,11 @@ extends TextureButton
 var modification : Modification
 var menu : VendingMenu
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	tooltip_text = modification.name
+
+func set_mod(mod: Modification):
+	modification = mod
+	$NameText.text = modification.name
+	tooltip_text = modification.description
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -14,7 +16,10 @@ func _process(delta):
 	pass
 
 
-
 func _on_pressed():
-	menu.update_mod_info(self, modification)
-	pass # Replace with function body.
+	menu.update_mod_info(self)
+
+
+func disable():
+	disabled = true
+	modulate = Color.RED

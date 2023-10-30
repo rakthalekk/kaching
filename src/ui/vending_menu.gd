@@ -4,10 +4,17 @@ extends Control
 var selected_button : ModButton
 var player : Player
 
+@export var modifications : Array[String]
+
+
+const MODIFICATION_BUTTON = preload("res://src/ui/modification_button.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player = get_parent() as Player
+	player = get_tree().get_first_node_in_group("player") as Player
 	selected_button = null
+	for mod in modifications:
+		add_mod(ModificationDatabase.get_modification_by_name(mod))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,18 +23,25 @@ func _process(delta):
 
 # Creates a button that holds information of the modification
 func add_mod(mod):
-	var modification_button = preload("res://src/ui/modification_button.tscn").instantiate()
-	modification_button.modification = mod
+	var modification_button = MODIFICATION_BUTTON.instantiate() as ModButton
+	modification_button.menu = self
+	modification_button.set_mod(mod)
 	%ButtonContainer.add_child(modification_button)
-	
-func update_mod_info(button, mod):
+
+
+func update_mod_info(button: ModButton):
+	var mod = button.modification as Modification
 	selected_button = button
 	%ModName.text = mod.name
-	%ModType.text = mod.type
+	
+	if mod is CoinModification:
+		%ModType.text = Modification.COIN_TYPE.keys()[mod.coin_type]
+	else:
+		%ModType.text = "no type???"
+	
 	%ModificationImage.texture = mod.texture
-	%Cost.text = "Cost: $" + mod.cost
+	%Cost.text = "Cost: $%d" % mod.cost
 	%ModInfo.text = mod.description
-
 
 
 func _on_purchase_button_pressed():
@@ -36,27 +50,15 @@ func _on_purchase_button_pressed():
 	if player.dollars < selected_button.modification.cost:
 		# Maybe make some kind of invalid purchase type beat here
 		return
+	
 	player.dollars -= ceil(selected_button.modification.cost)
 	var change = ceil(selected_button.modification.cost) - selected_button.modification.cost
+	
 	# give player the selected modification here and change
-	return_coins(change)
-	selected_button.disabled = true
-
-func return_coins(change: int):
-	# First chdck for how many quarters to give out
-	while change >= 70:
-		# Add quarter to player
-		player.quarters += 1
-		change -= 25
-	while change >= 35:
-		player.dimes += 1
-		change -= 10
-	if change >= 25:
-		player.nickels += 1
-		change -= 5
-	while change > 0:
-		player.pennies += 1
-		change -= 1
+	player.return_coins(change * 100)
+	player.add_modification(selected_button.modification)
+	
+	selected_button.disable()
 
 
 func _on_exit_button_pressed():

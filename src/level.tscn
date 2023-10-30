@@ -683,15 +683,15 @@ position = Vector2(441, 185)
 
 [node name="Enemy" parent="." instance=ExtResource("7_xpk67")]
 y_sort_enabled = true
-position = Vector2(588, 104)
+position = Vector2(637, -57)
 
 [node name="Enemy2" parent="." instance=ExtResource("7_xpk67")]
 y_sort_enabled = true
-position = Vector2(605, 110)
+position = Vector2(536, 50)
 
 [node name="Enemy3" parent="." instance=ExtResource("7_xpk67")]
 y_sort_enabled = true
-position = Vector2(634, 119)
+position = Vector2(685, 104)
 
 [node name="Enemy4" parent="." instance=ExtResource("7_xpk67")]
 y_sort_enabled = true
@@ -700,5 +700,5 @@ position = Vector2(881, 166)
 [node name="Vending Machine" parent="." instance=ExtResource("8_yf6nm")]
 position = Vector2(232, 10)
 
-[node name="Player" parent="." instance=ExtResource("1_jpbdj")]
-position = Vector2(800, 251)
+[node name="Player" parent="." groups=["player"] instance=ExtResource("1_jpbdj")]
+position = Vector2(222, 43)

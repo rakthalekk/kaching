@@ -15,7 +15,8 @@ texture = ExtResource("1_cmhgv")
 script = ExtResource("2_6g46p")
 amount = 2.0
 coin_type = 1
-description = "jimmy"
+description = "no way is that jimmy"
+cost = 0.7
 
 [node name="PennyBullet" type="Sprite2D" parent="."]
 position = Vector2(137, 41)

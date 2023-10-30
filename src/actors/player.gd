@@ -25,7 +25,7 @@ var dimes := 300
 var quarters := 300
 
 var dollar_fragments = 0
-var dollars = 0
+var dollars = 1
 
 var modifications: Array[Modification]
 
@@ -56,6 +56,7 @@ func _ready():
 	hud.show()
 	hud.player = self
 	hud.update_coins()
+	hud.update_dollar_fragments()
 	
 	hurtbox.actor = self
 	equip_menu.player = self
@@ -86,13 +87,38 @@ func update_modifications():
 	for mod in modifications:
 		if mod is CoinStatModification:
 			var mod_struct = attack_stat_modifications[mod.coin_type] as ModifierStruct
-			mod_struct.stat_modifiers[mod.MODIFY_ATTACK_STAT] = mod.amount
+			mod_struct.stat_modifiers[mod.modify_stat] = mod.amount
 		elif mod is AttackModification:
 			attack_modifications[mod.coin_type].append(mod.attack_name)
 	
 	penny_equip = attack_modifications[Modification.COIN_TYPE.PENNY][0]
 	dime_equip = attack_modifications[Modification.COIN_TYPE.DIME][0]
 	quarter_equip = attack_modifications[Modification.COIN_TYPE.QUARTER][0]
+
+
+func add_modification(mod: Modification):
+	modifications.append(mod)
+	update_modifications()
+
+
+func return_coins(change: int):
+	# First chdck for how many quarters to give out
+	while change >= 70:
+		# Add quarter to player
+		quarters += 1
+		change -= 25
+	while change >= 35:
+		dimes += 1
+		change -= 10
+	if change >= 25:
+		nickels += 1
+		change -= 5
+	while change > 0:
+		pennies += 1
+		change -= 1
+	
+	hud.update_coins()
+	hud.update_dollar_fragments()
 
 
 func add_dollar_fragment(num: int = 1):
