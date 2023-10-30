@@ -59,12 +59,10 @@ var attack_stat_modifications = {CoinModification.COIN_TYPE.PENNY: ModifierStruc
 @onready var hud = $UI/HUD as HUD
 @onready var equip_menu = $UI/EquipMenu as EquipMenu
 
-@onready var hurtbox = $Hurtbox as Hurtbox
-
 # Currently equipped 
 @onready var penny_equip = PENNY_BULLET
 @onready var dime_equip = DIME_LASER
-@onready var quarter_equip = QUARTER_DISK
+@onready var quarter_equip = QUARTER_GRENADE
 
 
 func _ready():
@@ -78,6 +76,8 @@ func _ready():
 	modifications.append(ModificationDatabase.get_modification_by_name("Jimmy"))
 	
 	update_modifications()
+	
+	super()
 
 
 func _physics_process(delta):
@@ -106,8 +106,8 @@ func add_dollar_fragment(num: int = 1):
 	hud.update_dollar_fragments()
 
 
-func yowch(damage: int):
-	super(damage)
+func yowch(damage: int, iframe_time = 0.1):
+	super(damage, iframe_time)
 	$EffectsAnimation.play("hurt")
 
 

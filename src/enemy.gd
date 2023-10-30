@@ -11,8 +11,6 @@ var anim_suffix = ""
 
 @export var cheeked_up : Texture
 
-@onready var hurtbox = $Hurtbox as Hurtbox
-
 # Reference to penny bullet instance that player can instantiate
 const DOLLAR_FRAGMENT = preload("res://src/dollar_fragment.tscn")
 
@@ -22,6 +20,7 @@ func _ready():
 		$Sprite.texture = cheeked_up
 	
 	hurtbox.actor = self
+	super()
 
 
 func _physics_process(delta):

@@ -14,13 +14,14 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func _on_hitbox_body_entered(body):
-	if body is Enemy:
-		body.yowch(damage)
-		
-		body.take_dir_knockback(velocity.normalized(), knockback_force)
-
 func destroy_self():
 	$AnimationPlayer.play("fade before die")
 	await $AnimationPlayer.animation_finished
 	super()
+
+
+func _on_hitbox_area_entered(area):
+	if area is Hurtbox:
+		var body = area.actor
+		body.yowch(damage)
+		body.take_dir_knockback(velocity.normalized(), knockback_force)

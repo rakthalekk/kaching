@@ -697,11 +697,8 @@ position = Vector2(634, 119)
 y_sort_enabled = true
 position = Vector2(881, 166)
 
-[node name="Player" parent="." instance=ExtResource("1_jpbdj")]
-y_sort_enabled = true
-position = Vector2(780, 350)
-
 [node name="Vending Machine" parent="." instance=ExtResource("8_yf6nm")]
 position = Vector2(232, 10)
 
-[connection signal="input_event" from="Player" to="Player" method="_on_input_event"]
+[node name="Player" parent="." instance=ExtResource("1_jpbdj")]
+position = Vector2(800, 251)
