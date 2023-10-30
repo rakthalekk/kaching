@@ -14,7 +14,9 @@ func set_direction(dir: Vector2):
 	
 	
 
-func _on_laser_hitbox_body_entered(body):
-	if body is Enemy:
+
+func _on_laser_hitbox_area_entered(area):
+	if area is Hurtbox:
+		var body = area.actor
 		body.yowch(damage)
 		body.take_dir_knockback(direction.normalized(), knockback_force)

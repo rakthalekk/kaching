@@ -37,4 +37,4 @@ default_color = Color(0, 0.756863, 0.298039, 1)
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
 
-[connection signal="body_entered" from="LaserHitbox" to="." method="_on_laser_hitbox_body_entered"]
+[connection signal="area_entered" from="LaserHitbox" to="." method="_on_laser_hitbox_area_entered"]
