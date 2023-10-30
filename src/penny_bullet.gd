@@ -13,8 +13,8 @@ func _process(delta):
 		raycast.enabled = false
 		if collider is Hurtbox:
 			var enemy = collider.actor
-			enemy.yowch(damage)
-			enemy.take_knockback(raycast.get_collision_point(), knockback_force)
+			enemy.yowch(damage + damage_modifier)
+			enemy.take_knockback(raycast.get_collision_point(), knockback_force + knockback_modifier)
 	elif raycast.enabled && frames_since_init > 3:
 		$Line2D.add_point(raycast.target_position)
 		raycast.enabled = false
@@ -25,5 +25,5 @@ func _process(delta):
 func set_direction(dir: Vector2):
 	await ready
 	direction = dir
-	raycast.target_position = direction * speed
+	raycast.target_position = direction * (speed + speed_modifier)
 

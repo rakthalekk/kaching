@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
 Global="*res://src/global.tscn"
+ModificationDatabase="*res://src/modifications/modification_database.tscn"
 
 [display]
 

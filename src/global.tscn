@@ -1,12 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlkjwow2dehp4"]
+[gd_scene load_steps=3 format=3 uid="uid://dte686v4jn36q"]
 
 [ext_resource type="Script" path="res://src/global.gd" id="1_nagt6"]
-[ext_resource type="AudioStream" uid="uid://b0nauton6vvby" path="res://assets/Audio/and_the_wind_blows.mp3" id="1_y4d2t"]
+[ext_resource type="AudioStream" uid="uid://cicj5jvdwhyw5" path="res://assets/Audio/and the wind blows.wav" id="2_iaxs1"]
 
 [node name="Global" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_nagt6")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_y4d2t")
+stream = ExtResource("2_iaxs1")
 volume_db = -10.0
 autoplay = true

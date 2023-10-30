@@ -13,8 +13,8 @@ func _physics_process(delta):
 func _on_hitbox_area_entered(area):
 	if area is Hurtbox:
 		var body = area.actor
-		body.yowch(damage)
-		body.take_knockback(global_position, knockback_force)
+		body.yowch(damage + damage_modifier)
+		body.take_knockback(global_position, knockback_force + knockback_modifier)
 		enemies_hit += 1
 	
 	if enemies_hit == 3:

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/level.gd" id="1_ehmgi"]
 [ext_resource type="PackedScene" uid="uid://dli126qdy01ey" path="res://src/player.tscn" id="1_jpbdj"]
-[ext_resource type="PackedScene" path="res://src/dollar_fragment.tscn" id="2_jex46"]
+[ext_resource type="PackedScene" uid="uid://cob8mgfxhfcs2" path="res://src/dollar_fragment.tscn" id="2_jex46"]
 [ext_resource type="Texture2D" uid="uid://it8hjt58tya5" path="res://icon.svg" id="2_nf6li"]
 [ext_resource type="Texture2D" uid="uid://bigoqy8cut88a" path="res://assets/Golden Dragon Tileset.png" id="3_bqujp"]
 [ext_resource type="Texture2D" uid="uid://cnnod76vj50ji" path="res://assets/outside road tileset.png" id="4_ck0ii"]
@@ -699,7 +699,7 @@ position = Vector2(881, 166)
 
 [node name="Player" parent="." instance=ExtResource("1_jpbdj")]
 y_sort_enabled = true
-position = Vector2(188, 46)
+position = Vector2(780, 350)
 
 [node name="Vending Machine" parent="." instance=ExtResource("8_yf6nm")]
 position = Vector2(232, 10)
