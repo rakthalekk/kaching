@@ -11,12 +11,12 @@ func _process(delta):
 
 
 func update_coins():
-	$Coins/Pennies.text = "P: %d" % player.pennies
-	$Coins/Nickels.text = "N: %d" % player.nickels
-	$Coins/Dimes.text = "D: %d" % player.dimes
-	$Coins/Quarters.text = "Q: %d" % player.quarters
+	$Coins/Pennies.text = str(player.pennies)
+	$Coins/Nickels.text = str(player.nickels)
+	$Coins/Dimes.text = str(player.dimes)
+	$Coins/Quarters.text = str(player.quarters)
 
 
 func update_dollar_fragments():
-	$Coins/DollarFragments.text = "Dollar Fragments: %d" % player.dollar_fragments
-	$Coins/Dollars.text = "Dollars: %d" % player.dollars
+	$Dollars/DollarFragments.text = "Dollar Fragments: %d" % player.dollar_fragments
+	$Dollars/Dollars.text = "Dollars: %d" % player.dollars

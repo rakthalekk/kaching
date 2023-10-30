@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://devsngfnkumin"]
+[gd_scene load_steps=4 format=3 uid="uid://devsngfnkumin"]
 
-[ext_resource type="Script" path="res://src/ui/hud.gd" id="1_jqu18"]
+[ext_resource type="Script" path="res://src/hud.gd" id="1_jqu18"]
+[ext_resource type="Texture2D" uid="uid://dy870hgpgdhtf" path="res://assets/sprites/HUD coin wrap.png" id="2_kqxaa"]
+[ext_resource type="Texture2D" uid="uid://boxc12ut5npd7" path="res://assets/sprites/HUD coin wrap shading.png" id="3_abu3q"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -13,7 +15,7 @@ size_flags_horizontal = 2
 size_flags_vertical = 3
 script = ExtResource("1_jqu18")
 
-[node name="Coins" type="HBoxContainer" parent="."]
+[node name="Dollars" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -25,28 +27,80 @@ grow_vertical = 0
 size_flags_horizontal = 6
 size_flags_vertical = 2
 
-[node name="Pennies" type="Label" parent="Coins"]
-layout_mode = 2
-text = "P: 0"
-
-[node name="Nickels" type="Label" parent="Coins"]
-layout_mode = 2
-text = "N: 0"
-
-[node name="Dimes" type="Label" parent="Coins"]
-layout_mode = 2
-text = "D: 0"
-
-[node name="Quarters" type="Label" parent="Coins"]
-layout_mode = 2
-text = "Q: 0"
-
-[node name="DollarFragments" type="Label" parent="Coins"]
+[node name="DollarFragments" type="Label" parent="Dollars"]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 8
 text = "Dollar Fragments: 0"
 
-[node name="Dollars" type="Label" parent="Coins"]
+[node name="Dollars" type="Label" parent="Dollars"]
 layout_mode = 2
 text = "Dollars: 0"
+
+[node name="Coins" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="Coins"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = -6.0
+offset_right = 180.0
+offset_bottom = 50.0
+texture = ExtResource("2_kqxaa")
+
+[node name="Pennies" type="Label" parent="Coins"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 10.0
+offset_top = 15.0
+offset_right = 38.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0.772549, 0.180392, 0.243137, 1)
+text = "000"
+horizontal_alignment = 1
+
+[node name="Nickels" type="Label" parent="Coins"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 55.0
+offset_top = 15.0
+offset_right = 83.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0.239216, 0.368627, 0.658824, 1)
+text = "000"
+horizontal_alignment = 1
+
+[node name="Dimes" type="Label" parent="Coins"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 100.0
+offset_top = 15.0
+offset_right = 128.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0.219608, 0.482353, 0.211765, 1)
+text = "000"
+horizontal_alignment = 1
+
+[node name="Quarters" type="Label" parent="Coins"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 145.0
+offset_top = 15.0
+offset_right = 173.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0.996078, 0.470588, 0.207843, 1)
+text = "000"
+horizontal_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="Coins"]
+offset_left = 3.0
+offset_top = -6.0
+offset_right = 180.0
+offset_bottom = 50.0
+texture = ExtResource("3_abu3q")
