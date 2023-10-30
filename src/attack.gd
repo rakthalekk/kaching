@@ -19,6 +19,7 @@ var direction = Vector2.ZERO
 
 func _ready():
 	add_child(active_timer)
+	active_timer.one_shot = true
 	active_timer.connect("timeout", destroy_self)
 	active_timer.start(duration + duration_modifier)
 

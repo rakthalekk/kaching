@@ -8,6 +8,8 @@ func _physics_process(delta):
 	speed -= friction * delta
 	velocity = direction * speed
 	
+	rotation_degrees += delta * 150
+	
 	# note: move_and_slide accepts a PRE-delta velocity, so no need to multiply it
 	move_and_slide()
 
