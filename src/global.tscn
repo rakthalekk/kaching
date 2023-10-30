@@ -4,6 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://cicj5jvdwhyw5" path="res://assets/Audio/and the wind blows.wav" id="2_iaxs1"]
 
 [node name="Global" type="Node2D"]
+process_mode = 3
 script = ExtResource("1_nagt6")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
