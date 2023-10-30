@@ -1,6 +1,6 @@
 [gd_scene load_steps=72 format=3 uid="uid://diktsty1sh370"]
 
-[ext_resource type="Script" path="res://src/dime_laser.gd" id="1_vxjou"]
+[ext_resource type="Script" path="res://src/attacks/dime_laser.gd" id="1_vxjou"]
 [ext_resource type="Texture2D" uid="uid://2pjguhey7u0o" path="res://assets/sprites/animated lazer.png" id="2_2aaa7"]
 [ext_resource type="Texture2D" uid="uid://dvrmoi2t0uxv2" path="res://assets/sprites/laser_start.png" id="2_4qgoj"]
 

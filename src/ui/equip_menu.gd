@@ -5,7 +5,7 @@ extends Control
 # Reference to the player. As a child of the player, this is assigned by the player's ready function
 var player: Player
 
-const MOD_TILE = preload("res://src/equip_mod_tile.tscn")
+const MOD_TILE = preload("res://src/ui/equip_mod_tile.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

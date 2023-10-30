@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bol3w4606o16b"]
 
-[ext_resource type="Script" path="res://src/quarter_disk.gd" id="1_oo2us"]
-[ext_resource type="Texture2D" uid="uid://bnvwojqnbvrce" path="res://assets/sprites/quality_quarter.png" id="2_v6i0a"]
+[ext_resource type="Script" path="res://src/attacks/quarter_disk.gd" id="1_33r23"]
+[ext_resource type="Texture2D" uid="uid://bnvwojqnbvrce" path="res://assets/sprites/quality_quarter.png" id="2_g333e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7wk7v"]
 size = Vector2(123, 126)
@@ -47,10 +47,9 @@ _data = {
 }
 
 [node name="quarter_disk" type="CharacterBody2D"]
-z_index = -1
 collision_layer = 8
 motion_mode = 1
-script = ExtResource("1_oo2us")
+script = ExtResource("1_33r23")
 speed = 75
 damage = 1
 knockback_force = 150
@@ -60,7 +59,7 @@ duration = 3.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_v6i0a")
+texture = ExtResource("2_g333e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

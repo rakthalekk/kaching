@@ -31,10 +31,10 @@ func move():
 
 
 func populate_modifiers(mod: Player.ModifierStruct):
-	speed_modifier = mod.stat_modifiers[CoinStatModification.MODIFY_STAT.SPEED]
-	damage_modifier = mod.stat_modifiers[CoinStatModification.MODIFY_STAT.DAMAGE]
-	knockback_modifier = mod.stat_modifiers[CoinStatModification.MODIFY_STAT.KNOCKBACK]
-	duration_modifier = mod.stat_modifiers[CoinStatModification.MODIFY_STAT.DURATION]
+	speed_modifier = mod.stat_modifiers[Modification.MODIFY_ATTACK_STAT.SPEED]
+	damage_modifier = mod.stat_modifiers[Modification.MODIFY_ATTACK_STAT.DAMAGE]
+	knockback_modifier = mod.stat_modifiers[Modification.MODIFY_ATTACK_STAT.KNOCKBACK]
+	duration_modifier = mod.stat_modifiers[Modification.MODIFY_ATTACK_STAT.DURATION]
 	
 	# Restars timer with new duration modifier
 	active_timer.start(duration + duration_modifier)

@@ -1,9 +1,9 @@
 [gd_scene load_steps=28 format=3 uid="uid://ct2molnfhouao"]
 
-[ext_resource type="Texture2D" uid="uid://it8hjt58tya5" path="res://icon.svg" id="1_b340s"]
-[ext_resource type="Script" path="res://src/quarter_grenade.gd" id="1_jpex4"]
-[ext_resource type="Texture2D" uid="uid://bt6hchvqfgsk3" path="res://assets/sprites/deltarune explosion.png" id="3_jpcdr"]
-[ext_resource type="AudioStream" uid="uid://bnmurc4ake8xi" path="res://assets/Audio/deltarune explosion.mp3" id="4_a4dev"]
+[ext_resource type="Script" path="res://src/attacks/quarter_grenade.gd" id="1_cn4bw"]
+[ext_resource type="Texture2D" uid="uid://it8hjt58tya5" path="res://icon.svg" id="2_rkp72"]
+[ext_resource type="Texture2D" uid="uid://bt6hchvqfgsk3" path="res://assets/sprites/deltarune explosion.png" id="3_rik6h"]
+[ext_resource type="AudioStream" uid="uid://bnmurc4ake8xi" path="res://assets/Audio/deltarune explosion.mp3" id="4_ghvak"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c0u01"]
 size = Vector2(12, 12)
@@ -12,83 +12,83 @@ size = Vector2(12, 12)
 radius = 77.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wm5k0"]
-atlas = ExtResource("3_jpcdr")
+atlas = ExtResource("3_rik6h")
 region = Rect2(0, 0, 600, 338)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0muup"]
-atlas = ExtResource("3_jpcdr")
+atlas = ExtResource("3_rik6h")
 region = Rect2(600, 0, 600, 338)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iul8d"]
-atlas = ExtResource("3_jpcdr")
+atlas = ExtResource("3_rik6h")
 region = Rect2(1200, 0, 600, 338)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_necqt"]
-atlas = ExtResource("3_jpcdr")
+atlas = ExtResource("3_rik6h")
 region = Rect2(1800, 0, 600, 338)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_837dr"]
-atlas = ExtResource("3_jpcdr")
+atlas = ExtResource("3_rik6h")
 region = Rect2(2400, 0, 600, 338)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w8njr"]
-atlas = ExtResource("3_jpcdr")
+atlas = ExtResource("3_rik6h")
 region = Rect2(0, 338, 600, 338)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j73ne"]
-atlas = ExtResource("3_jpcdr")
+atlas = ExtResource("3_rik6h")
 region = Rect2(600, 338, 600, 338)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0htyk"]
-atlas = ExtResource("3_jpcdr")
+atlas = ExtResource("3_rik6h")
 region = Rect2(1200, 338, 600, 338)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1rkqn"]
-atlas = ExtResource("3_jpcdr")
+atlas = ExtResource("3_rik6h")
 region = Rect2(1800, 338, 600, 338)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_71hdi"]
-atlas = ExtResource("3_jpcdr")
+atlas = ExtResource("3_rik6h")
 region = Rect2(2400, 338, 600, 338)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kmr6g"]
-atlas = ExtResource("3_jpcdr")
+atlas = ExtResource("3_rik6h")
 region = Rect2(0, 676, 600, 338)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ukxj"]
-atlas = ExtResource("3_jpcdr")
+atlas = ExtResource("3_rik6h")
 region = Rect2(600, 676, 600, 338)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qxsxx"]
-atlas = ExtResource("3_jpcdr")
+atlas = ExtResource("3_rik6h")
 region = Rect2(1200, 676, 600, 338)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oxw3c"]
-atlas = ExtResource("3_jpcdr")
+atlas = ExtResource("3_rik6h")
 region = Rect2(1800, 676, 600, 338)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2phma"]
-atlas = ExtResource("3_jpcdr")
+atlas = ExtResource("3_rik6h")
 region = Rect2(2400, 676, 600, 338)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_es8gx"]
-atlas = ExtResource("3_jpcdr")
+atlas = ExtResource("3_rik6h")
 region = Rect2(0, 1014, 600, 338)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yxoau"]
-atlas = ExtResource("3_jpcdr")
+atlas = ExtResource("3_rik6h")
 region = Rect2(600, 1014, 600, 338)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_10plv"]
-atlas = ExtResource("3_jpcdr")
+atlas = ExtResource("3_rik6h")
 region = Rect2(1200, 1014, 600, 338)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8x3v8"]
-atlas = ExtResource("3_jpcdr")
+atlas = ExtResource("3_rik6h")
 region = Rect2(1800, 1014, 600, 338)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dh8gt"]
-atlas = ExtResource("3_jpcdr")
+atlas = ExtResource("3_rik6h")
 region = Rect2(2400, 1014, 600, 338)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ysalo"]
@@ -162,7 +162,7 @@ animations = [{
 [node name="QuarterGrenade" type="CharacterBody2D"]
 collision_layer = 8
 motion_mode = 1
-script = ExtResource("1_jpex4")
+script = ExtResource("1_cn4bw")
 speed = 300
 damage = 20
 knockback_force = 350
@@ -175,7 +175,7 @@ shape = SubResource("RectangleShape2D_c0u01")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_b340s")
+texture = ExtResource("2_rkp72")
 
 [node name="ExplosionRadius" type="Area2D" parent="."]
 collision_layer = 0
@@ -196,6 +196,6 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Boom" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_a4dev")
+stream = ExtResource("4_ghvak")
 
 [connection signal="area_entered" from="ExplosionRadius" to="." method="_on_explosion_radius_area_entered"]

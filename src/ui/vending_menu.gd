@@ -6,7 +6,7 @@ var player : Player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player = get_parent().get_node("Player")
+	player = get_parent() as Player
 	selected_button = null
 
 
@@ -16,7 +16,7 @@ func _process(delta):
 
 # Creates a button that holds information of the modification
 func add_mod(mod):
-	var modification_button = preload("res://src/modification_button.tscn").instantiate()
+	var modification_button = preload("res://src/ui/modification_button.tscn").instantiate()
 	modification_button.modification = mod
 	%ButtonContainer.add_child(modification_button)
 	
