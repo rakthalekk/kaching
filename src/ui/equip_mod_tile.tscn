@@ -1,13 +1,28 @@
-[gd_scene format=3 uid="uid://b8btkndev7gkd"]
+[gd_scene load_steps=3 format=3 uid="uid://b8btkndev7gkd"]
 
-[node name="EquipModTile" type="TextureRect"]
+[ext_resource type="Texture2D" uid="uid://it8hjt58tya5" path="res://icon.svg" id="1_eb3y8"]
+[ext_resource type="Script" path="res://src/ui/equip_mod_tile.gd" id="2_2bewa"]
+
+[node name="EquipModTile" type="TextureButton"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+size_flags_horizontal = 0
+texture_normal = ExtResource("1_eb3y8")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("2_2bewa")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 12
+text = "Mod"
+horizontal_alignment = 1
+autowrap_mode = 1

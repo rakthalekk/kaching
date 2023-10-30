@@ -19,17 +19,17 @@ class ModifierStruct:
 ### LOCAL VARS
 
 # Current number of each coin
-var pennies := 300
+var pennies := 5
 var nickels := 0
-var dimes := 300
-var quarters := 300
+var dimes := 2
+var quarters := 1
 
 var dollar_fragments = 0
 var dollars = 1
 
 var modifications: Array[Modification]
 
-var attack_modifications = {Modification.COIN_TYPE.PENNY: [], Modification.COIN_TYPE.DIME: [], Modification.COIN_TYPE.QUARTER: []}
+var attack_modifications = {Modification.COIN_TYPE.PENNY: [], Modification.COIN_TYPE.NICKEL: [], Modification.COIN_TYPE.DIME: [], Modification.COIN_TYPE.QUARTER: []}
 
 var attack_stat_modifications = {Modification.COIN_TYPE.PENNY: ModifierStruct.new(),
 		Modification.COIN_TYPE.DIME: ModifierStruct.new(),
@@ -102,23 +102,30 @@ func add_modification(mod: Modification):
 
 
 func return_coins(change: int):
+	var returned_coins = [0, 0, 0, 0]
+	
 	# First chdck for how many quarters to give out
 	while change >= 70:
 		# Add quarter to player
 		quarters += 1
+		returned_coins[0] += 1
 		change -= 25
 	while change >= 35:
 		dimes += 1
+		returned_coins[1] += 1
 		change -= 10
 	if change >= 25:
 		nickels += 1
+		returned_coins[2] += 1
 		change -= 5
 	while change > 0:
 		pennies += 1
+		returned_coins[3] += 1
 		change -= 1
 	
 	hud.update_coins()
 	hud.update_dollar_fragments()
+	return returned_coins
 
 
 func add_dollar_fragment(num: int = 1):
@@ -196,6 +203,7 @@ func _process(delta):
 func _on_interactable_area_body_entered(body):
 	if body is VendingMachine:
 		var vending_menu = VENDING_MENU.instantiate()
+		vending_menu.populate_mods(body)
 		get_node("UI/HUD").add_child(vending_menu)
 		get_tree().paused = true
 

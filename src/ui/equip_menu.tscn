@@ -11,6 +11,7 @@
 
 [sub_resource type="SystemFont" id="SystemFont_3syu5"]
 generate_mipmaps = true
+subpixel_positioning = 0
 
 [node name="EquipMenu" type="Control"]
 layout_mode = 3
@@ -22,11 +23,14 @@ grow_vertical = 2
 script = ExtResource("1_1xcuy")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 163.0
+grow_horizontal = 2
 
 [node name="PlayerStat" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(224, 360)
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PlayerStat"]
@@ -34,21 +38,32 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/PlayerStat/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 6
 texture = ExtResource("2_n3eij")
 
 [node name="StatList" type="VBoxContainer" parent="HBoxContainer/PlayerStat/HBoxContainer"]
 layout_mode = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/PlayerStat"]
+[node name="HealthBar" type="ProgressBar" parent="HBoxContainer/PlayerStat"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Control" type="Control" parent="HBoxContainer/PlayerStat"]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Ammo Counts" type="TextureRect" parent="HBoxContainer/PlayerStat/Control"]
-layout_mode = 0
-offset_right = 224.0
-offset_bottom = 112.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -112.0
+offset_top = -112.0
+offset_right = 112.0
+grow_horizontal = 2
+grow_vertical = 0
 texture = ExtResource("3_salrj")
 
 [node name="PennyCount" type="Label" parent="HBoxContainer/PlayerStat/Control/Ammo Counts"]
@@ -131,66 +146,98 @@ text = "069"
 horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/PlayerStat/Control"]
-layout_mode = 2
-offset_right = 40.0
-offset_bottom = 40.0
+custom_minimum_size = Vector2(224, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -112.0
+offset_top = -112.0
+offset_right = 112.0
+grow_horizontal = 2
+grow_vertical = 0
 texture = ExtResource("4_kse41")
 
 [node name="GunMods" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="PennyMods" type="HBoxContainer" parent="HBoxContainer/GunMods"]
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/GunMods/PennyMods"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("5_8luuc")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/GunMods/PennyMods"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="PennyModList" type="HBoxContainer" parent="HBoxContainer/GunMods/PennyMods/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="NickelMods" type="HBoxContainer" parent="HBoxContainer/GunMods"]
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/GunMods/NickelMods"]
 layout_mode = 2
+size_flags_vertical = 4
 texture = ExtResource("6_m2wki")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/GunMods/NickelMods"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="NickelModList" type="HBoxContainer" parent="HBoxContainer/GunMods/NickelMods/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="DimeMods" type="HBoxContainer" parent="HBoxContainer/GunMods"]
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/GunMods/DimeMods"]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
 texture = ExtResource("7_dy11j")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/GunMods/DimeMods"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="DimeModList" type="HBoxContainer" parent="HBoxContainer/GunMods/DimeMods/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="QuarterMods" type="HBoxContainer" parent="HBoxContainer/GunMods"]
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/GunMods/QuarterMods"]
 layout_mode = 2
+size_flags_vertical = 4
 texture = ExtResource("8_k7yuu")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/GunMods/QuarterMods"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="QuarterModList" type="HBoxContainer" parent="HBoxContainer/GunMods/QuarterMods/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
