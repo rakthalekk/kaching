@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dli126qdy01ey"]
+[gd_scene load_steps=13 format=3 uid="uid://dli126qdy01ey"]
 
 [ext_resource type="Script" path="res://src/actors/player.gd" id="1_awono"]
 [ext_resource type="Texture2D" uid="uid://it8hjt58tya5" path="res://icon.svg" id="1_ya7u0"]
 [ext_resource type="PackedScene" uid="uid://devsngfnkumin" path="res://src/ui/hud.tscn" id="3_cdex1"]
 [ext_resource type="PackedScene" uid="uid://d3s6y2xg13wjs" path="res://src/ui/equip_menu.tscn" id="4_agvi2"]
 [ext_resource type="Script" path="res://src/actors/hurtbox.gd" id="5_umqfp"]
+[ext_resource type="Script" path="res://src/actors/pause_handler.gd" id="6_2faxl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xibsx"]
 size = Vector2(12, 6)
@@ -144,6 +145,10 @@ script = ExtResource("5_umqfp")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_up82c")
+
+[node name="PauseHandler" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("6_2faxl")
 
 [connection signal="body_entered" from="InteractableArea" to="." method="_on_interactable_area_body_entered"]
 [connection signal="timeout" from="InteractableArea/InteractTimer" to="." method="_on_interact_timer_timeout"]
