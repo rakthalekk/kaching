@@ -63,9 +63,10 @@ func die():
 	if !dead:
 		$AnimationPlayer.play("die")
 		$Hitbox/CollisionShape2D.disabled = true
+		$Hurtbox/CollisionShape2D.disabled = true
+		$detection/CollisionShape2D.disabled = true
 		
-		var sound = randi_range(1, 3)
-		$AudioStreamPlayer2D.stream = load("res://assets/Audio/Zombie Death/zombie death %d.wav" % sound)
+		$AudioStreamPlayer2D.stream = load("res://assets/Audio/Zombie Death/zombie death %d.wav" % randi_range(1, 3))
 		$AudioStreamPlayer2D.play()
 		
 		dead = true
@@ -93,3 +94,11 @@ func _on_hitbox_area_entered(area):
 		var body = area.actor
 		body.yowch(damage)
 		body.take_knockback(global_position, knockback_force)
+
+
+func yowch(damage: int, iframe_time = 0.1):
+	$AudioStreamPlayer2D.stream = load("res://assets/Audio/Zombie Damage/damage %d.wav" % randi_range(1, 10))
+	$AudioStreamPlayer2D.play()
+	super(damage, iframe_time)
+
+

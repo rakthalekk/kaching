@@ -481,7 +481,7 @@ damage = 1
 knockback_force = 125
 cost = 1
 cooldown = 0.5
-duration = 0.4
+duration = 0.7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -515,5 +515,7 @@ position = Vector2(176, 0)
 sprite_frames = SubResource("SpriteFrames_dvb7r")
 frame = 3
 frame_progress = 0.834899
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="area_entered" from="LaserHitbox" to="." method="_on_laser_hitbox_area_entered"]
