@@ -247,6 +247,8 @@ libraries = {
 "": SubResource("AnimationLibrary_aq07w")
 }
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
 [node name="detection" type="Area2D" parent="."]
 visible = false
 collision_layer = 32

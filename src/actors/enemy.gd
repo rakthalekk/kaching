@@ -62,12 +62,23 @@ func _on_detection_body_entered(body):
 func die():
 	if !dead:
 		$AnimationPlayer.play("die")
+		$Hitbox/CollisionShape2D.disabled = true
+		
+		var sound = randi_range(1, 3)
+		$AudioStreamPlayer2D.stream = load("res://assets/Audio/Zombie Death/zombie death %d.wav" % sound)
+		$AudioStreamPlayer2D.play()
+		
 		dead = true
 		await $AnimationPlayer.animation_finished
-		
+		hide()
 		var dollar = DOLLAR_FRAGMENT.instantiate()
 		dollar.global_position = global_position
 		get_parent().add_child(dollar)
+		
+		if ($AudioStreamPlayer2D.playing):
+			await $AudioStreamPlayer2D.finished
+		
+		
 		
 		super()
 
