@@ -223,10 +223,6 @@ func _process(delta):
 			$GunSprite.texture = LAUNCHER
 		
 	hud.update_coins()
-		
-	if Input.is_action_just_pressed("equip_menu"):
-		equip_menu.visible = !equip_menu.visible
-		equip_menu.populate_player_data()
 
 	
 	if Input.is_action_just_pressed("interact"):

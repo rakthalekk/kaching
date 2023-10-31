@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cjupuxkpsnvw3" path="res://assets/pistol.png" id="3_t4sy6"]
 [ext_resource type="PackedScene" uid="uid://d3s6y2xg13wjs" path="res://src/ui/equip_menu.tscn" id="4_agvi2"]
 [ext_resource type="Script" path="res://src/actors/hurtbox.gd" id="5_umqfp"]
+[ext_resource type="Script" path="res://src/actors/pause_handler.gd" id="6_2faxl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xibsx"]
 size = Vector2(12, 6)
@@ -313,6 +314,10 @@ script = ExtResource("5_umqfp")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_up82c")
+
+[node name="PauseHandler" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("6_2faxl")
 
 [connection signal="body_entered" from="InteractableArea" to="." method="_on_interactable_area_body_entered"]
 [connection signal="timeout" from="InteractableArea/InteractTimer" to="." method="_on_interact_timer_timeout"]
