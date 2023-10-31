@@ -62,9 +62,10 @@ func _on_detection_body_entered(body):
 func die():
 	if !dead:
 		$AnimationPlayer.play("die")
-		$Hitbox/CollisionShape2D.disabled = true
-		$Hurtbox/CollisionShape2D.disabled = true
-		$detection/CollisionShape2D.disabled = true
+		
+		$Hitbox/CollisionShape2D.set_deferred("disabled", true)
+		$Hurtbox/CollisionShape2D.set_deferred("disabled", true)
+		$detection/CollisionShape2D.set_deferred("disabled", true)
 		
 		$AudioStreamPlayer2D.stream = load("res://assets/Audio/Zombie Death/zombie death %d.wav" % randi_range(1, 3))
 		$AudioStreamPlayer2D.play()

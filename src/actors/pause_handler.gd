@@ -17,3 +17,10 @@ func _process(delta):
 		hud.visible = !hud.visible
 		get_tree().paused = !get_tree().paused
 		equip_menu.populate_player_data()
+	
+	if Input.is_action_just_pressed("fullscreen"):
+		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			DisplayServer.window_set_size(Vector2(1920, 1080))
+		else:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)

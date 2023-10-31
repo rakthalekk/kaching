@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d00qm3pieact7" path="res://src/vending_machine.tscn" id="4_chwc5"]
 
 [node name="streets" type="Node2D"]
+y_sort_enabled = true
 
 [node name="Tiles" parent="." instance=ExtResource("1_fpveh")]
 tile_set = ExtResource("2_w8dh3")

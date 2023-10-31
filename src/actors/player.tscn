@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dli126qdy01ey"]
+[gd_scene load_steps=21 format=3 uid="uid://dli126qdy01ey"]
 
 [ext_resource type="Script" path="res://src/actors/player.gd" id="1_awono"]
 [ext_resource type="Texture2D" uid="uid://cn3y2ngyen2kv" path="res://assets/dropshadow.png" id="2_32stv"]
@@ -12,10 +12,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xibsx"]
 size = Vector2(12, 6)
 
-[sub_resource type="Animation" id="Animation_oliu2"]
-resource_name = "idle"
-length = 0.1
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_o7jpr"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -41,8 +39,10 @@ tracks/1/keys = {
 "values": [1]
 }
 
-[sub_resource type="Animation" id="Animation_o7jpr"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_oliu2"]
+resource_name = "idle"
+length = 0.1
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -240,7 +240,7 @@ starting_modifications = Array[String](["PennyBullet", "DimeBullet", "QuarterDis
 max_health = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 6)
+position = Vector2(0, 11)
 shape = SubResource("RectangleShape2D_xibsx")
 
 [node name="Shadow" type="Sprite2D" parent="."]
@@ -296,6 +296,7 @@ libraries = {
 [node name="InteractableArea" type="Area2D" parent="."]
 unique_name_in_owner = true
 visible = false
+position = Vector2(0, 5)
 collision_layer = 0
 collision_mask = 64
 monitoring = false
@@ -309,6 +310,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2(0, 5)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("5_umqfp")
