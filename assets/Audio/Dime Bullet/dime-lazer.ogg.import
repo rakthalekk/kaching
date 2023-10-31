@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dlglyyg36pthl"
+path="res://.godot/imported/dime-lazer.ogg-8978619efb973872b25e54fa4ca18ba3.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Audio/Dime Bullet/dime-lazer.ogg"
+dest_files=["res://.godot/imported/dime-lazer.ogg-8978619efb973872b25e54fa4ca18ba3.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

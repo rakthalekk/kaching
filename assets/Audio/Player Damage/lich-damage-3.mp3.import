@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://chnr21b5mkhmi"
+path="res://.godot/imported/lich-damage-3.mp3-0c8800bc3ae6343b12d7df23580999c5.mp3str"
+
+[deps]
+
+source_file="res://assets/Audio/Player Damage/lich-damage-3.mp3"
+dest_files=["res://.godot/imported/lich-damage-3.mp3-0c8800bc3ae6343b12d7df23580999c5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

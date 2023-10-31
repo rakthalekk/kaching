@@ -8,6 +8,9 @@ func _ready():
 	$Pivot/LaserStart.play("default")
 	$Pivot/Laser.play("default")
 	$Pivot/Laser2.play("default")
+	
+	$AudioStreamPlayer2D.stream = load("res://assets/Audio/Dime Bullet/dime-lazer.ogg")
+	$AudioStreamPlayer2D.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

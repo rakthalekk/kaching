@@ -167,6 +167,9 @@ func add_dollar_fragment(num: int = 1):
 func yowch(damage: int, iframe_time = 0.1):
 	super(damage, iframe_time)
 	$EffectsAnimation.play("hurt")
+	#$AudioStreamPlayer2D.volume_db = 1.0
+	$AudioStreamPlayer2D.stream = load("res://assets/Audio/Player Damage/lich-damage-%d.mp3" % randi_range(1, 4))
+	$AudioStreamPlayer2D.play()
 
 
 func create_attack(attack_name: String) -> Attack:
@@ -192,6 +195,8 @@ func _process(delta):
 			if randf() > mods.stat_modifiers[Modification.MODIFY_ATTACK_STAT.CONSERVE_CHANCE]:
 				pennies -= attack.cost
 			
+			$AudioStreamPlayer2D.stream = load("res://assets/Audio/Penny Hitscan/penny-hs-%d.ogg" % randi_range(1, 3))
+			$AudioStreamPlayer2D.play()
 			$PennyCooldown.start(max(0.05, attack.cooldown - mods.stat_modifiers[Modification.MODIFY_ATTACK_STAT.COOLDOWN]))
 			
 			$GunSprite.texture = PISTOL

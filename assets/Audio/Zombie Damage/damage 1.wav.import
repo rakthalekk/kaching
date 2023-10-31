@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bu8yn8sjlxwbg"
-path="res://.godot/imported/damage 1.wav-b7e79af2934d2f37f4b8781b19b3ad9c.sample"
+path="res://.godot/imported/damage 1.wav-02d351728ecaa8a278adb64d0a525460.sample"
 
 [deps]
 
-source_file="res://assets/Audio/Zombie Damage-Dismember/damage 1.wav"
-dest_files=["res://.godot/imported/damage 1.wav-b7e79af2934d2f37f4b8781b19b3ad9c.sample"]
+source_file="res://assets/Audio/Zombie Damage/damage 1.wav"
+dest_files=["res://.godot/imported/damage 1.wav-02d351728ecaa8a278adb64d0a525460.sample"]
 
 [params]
 

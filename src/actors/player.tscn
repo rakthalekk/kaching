@@ -291,6 +291,8 @@ libraries = {
 "": SubResource("AnimationLibrary_h4ul7")
 }
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
 [node name="InteractableArea" type="Area2D" parent="."]
 unique_name_in_owner = true
 visible = false

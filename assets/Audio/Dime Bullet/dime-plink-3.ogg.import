@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://hxl6clw3aecb"
+path="res://.godot/imported/dime-plink-3.ogg-02eb3adf6a5a0391e8a2fadb54dd7ec1.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Audio/Dime Bullet/dime-plink-3.ogg"
+dest_files=["res://.godot/imported/dime-plink-3.ogg-02eb3adf6a5a0391e8a2fadb54dd7ec1.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
