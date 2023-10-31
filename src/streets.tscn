@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://c3y42b7p7jfid" path="res://src/tiles.tscn" id="1_fpveh"]
 [ext_resource type="PackedScene" uid="uid://dli126qdy01ey" path="res://src/actors/player.tscn" id="2_eo1x1"]
 [ext_resource type="TileSet" uid="uid://brrxlash8roro" path="res://src/tiles.tres" id="2_w8dh3"]
-[ext_resource type="PackedScene" uid="uid://dlyn3xqk2i2pe" path="res://src/actors/enemy.tscn" id="3_ewjgo"]
 [ext_resource type="PackedScene" uid="uid://d00qm3pieact7" path="res://src/vending_machine.tscn" id="4_chwc5"]
+[ext_resource type="PackedScene" uid="uid://cp0x5qnenucw6" path="res://src/spawn_point.tscn" id="6_1bx1c"]
 
 [node name="streets" type="Node2D"]
 y_sort_enabled = true
@@ -21,9 +21,6 @@ layer_5/tile_data = PackedInt32Array()
 [node name="Player" parent="." instance=ExtResource("2_eo1x1")]
 position = Vector2(226, 290)
 
-[node name="Enemy" parent="." instance=ExtResource("3_ewjgo")]
-position = Vector2(324, 309)
-
 [node name="Vending Machine" parent="." instance=ExtResource("4_chwc5")]
 position = Vector2(129, 576)
 
@@ -31,38 +28,68 @@ position = Vector2(129, 576)
 zoom = Vector2(2, 2)
 process_callback = 0
 
-[node name="Enemy2" parent="." instance=ExtResource("3_ewjgo")]
-position = Vector2(429, 327)
+[node name="SpawnPoint" parent="." instance=ExtResource("6_1bx1c")]
+position = Vector2(337, 321)
 
-[node name="Enemy3" parent="." instance=ExtResource("3_ewjgo")]
-position = Vector2(951, 693)
+[node name="SpawnPoint2" parent="." instance=ExtResource("6_1bx1c")]
+position = Vector2(505, 336)
 
-[node name="Enemy4" parent="." instance=ExtResource("3_ewjgo")]
-position = Vector2(1203, 700)
+[node name="SpawnPoint3" parent="." instance=ExtResource("6_1bx1c")]
+position = Vector2(657, 302)
 
-[node name="Enemy5" parent="." instance=ExtResource("3_ewjgo")]
-position = Vector2(909, 294)
+[node name="SpawnPoint4" parent="." instance=ExtResource("6_1bx1c")]
+position = Vector2(928, 298)
 
-[node name="Enemy6" parent="." instance=ExtResource("3_ewjgo")]
-position = Vector2(979, 333)
+[node name="SpawnPoint5" parent="." instance=ExtResource("6_1bx1c")]
+position = Vector2(1144, 354)
 
-[node name="Enemy7" parent="." instance=ExtResource("3_ewjgo")]
-position = Vector2(714, 304)
+[node name="SpawnPoint6" parent="." instance=ExtResource("6_1bx1c")]
+position = Vector2(1320, 298)
 
-[node name="Enemy8" parent="." instance=ExtResource("3_ewjgo")]
-position = Vector2(772, 679)
+[node name="SpawnPoint7" parent="." instance=ExtResource("6_1bx1c")]
+position = Vector2(1373, 420)
 
-[node name="Enemy9" parent="." instance=ExtResource("3_ewjgo")]
-position = Vector2(596, 684)
+[node name="SpawnPoint8" parent="." instance=ExtResource("6_1bx1c")]
+position = Vector2(1458, 468)
 
-[node name="Enemy10" parent="." instance=ExtResource("3_ewjgo")]
-position = Vector2(478, 727)
+[node name="SpawnPoint9" parent="." instance=ExtResource("6_1bx1c")]
+position = Vector2(1389, 621)
 
-[node name="Enemy11" parent="." instance=ExtResource("3_ewjgo")]
-position = Vector2(369, 678)
+[node name="SpawnPoint10" parent="." instance=ExtResource("6_1bx1c")]
+position = Vector2(1469, 691)
 
-[node name="Enemy12" parent="." instance=ExtResource("3_ewjgo")]
-position = Vector2(1439, 633)
+[node name="SpawnPoint11" parent="." instance=ExtResource("6_1bx1c")]
+position = Vector2(1301, 686)
 
-[node name="Enemy13" parent="." instance=ExtResource("3_ewjgo")]
-position = Vector2(1419, 409)
+[node name="SpawnPoint12" parent="." instance=ExtResource("6_1bx1c")]
+position = Vector2(1188, 749)
+
+[node name="SpawnPoint13" parent="." instance=ExtResource("6_1bx1c")]
+position = Vector2(805, 689)
+
+[node name="SpawnPoint14" parent="." instance=ExtResource("6_1bx1c")]
+position = Vector2(1040, 744)
+
+[node name="SpawnPoint15" parent="." instance=ExtResource("6_1bx1c")]
+position = Vector2(962, 699)
+
+[node name="SpawnPoint16" parent="." instance=ExtResource("6_1bx1c")]
+position = Vector2(638, 757)
+
+[node name="SpawnPoint17" parent="." instance=ExtResource("6_1bx1c")]
+position = Vector2(553, 658)
+
+[node name="SpawnPoint18" parent="." instance=ExtResource("6_1bx1c")]
+position = Vector2(452, 747)
+
+[node name="SpawnPoint19" parent="." instance=ExtResource("6_1bx1c")]
+position = Vector2(340, 664)
+
+[node name="SpawnPoint20" parent="." instance=ExtResource("6_1bx1c")]
+position = Vector2(285, 710)
+
+[node name="SpawnPoint21" parent="." instance=ExtResource("6_1bx1c")]
+position = Vector2(202, 628)
+
+[node name="SpawnPoint22" parent="." instance=ExtResource("6_1bx1c")]
+position = Vector2(140, 702)
