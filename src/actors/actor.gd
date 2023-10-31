@@ -29,7 +29,7 @@ func yowch(damage: int, iframe_time = 0.1):
 	if health <= 0:
 		die()
 	
-	invuln_timer.start(0.1)
+	invuln_timer.start(iframe_time)
 	disable_hurtbox()
 
 
@@ -40,13 +40,17 @@ func handle_movement(delta):
 	else:
 		velocity = Vector2.ZERO
 		
+	check_knockback(delta)
+	
+	move_and_slide()
+
+
+func check_knockback(delta):
 	if knockback:
 		velocity += knockback_velocity
 		knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, delta * knockback_friction)
 		if knockback_velocity.length() <= 0:
 			knockback = false
-	
-	move_and_slide()
 
 
 func die():

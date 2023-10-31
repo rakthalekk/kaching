@@ -62,5 +62,18 @@ func populate_player_data():
 
 func create_mod_tile(mod: Modification) -> EquipModTile:
 	var mod_tile = MOD_TILE.instantiate() as EquipModTile
+	mod_tile.menu = self
 	mod_tile.populate_mod(mod)
 	return mod_tile
+
+
+func equip_mod(mod_tile: EquipModTile):
+	var mod = mod_tile.mod
+	if mod.coin_type == Modification.COIN_TYPE.PENNY:
+		player.penny_equip = mod.attack_name
+	elif mod.coin_type == Modification.COIN_TYPE.NICKEL:
+		player.nickel_equip = mod.attack_name
+	elif mod.coin_type == Modification.COIN_TYPE.DIME:
+		player.dime_equip = mod.attack_name
+	elif mod.coin_type == Modification.COIN_TYPE.QUARTER:
+		player.quarter_equip = mod.attack_name
