@@ -19,10 +19,10 @@ class ModifierStruct:
 ### LOCAL VARS
 
 # Current number of each coin
-var pennies := 5
-var nickels := 0
-var dimes := 2
-var quarters := 1
+var pennies := 300
+var nickels := 300
+var dimes := 300
+var quarters := 300
 
 var dollar_fragments = 0
 var dollars = 1
@@ -35,10 +35,19 @@ var attack_stat_modifications = {Modification.COIN_TYPE.PENNY: ModifierStruct.ne
 		Modification.COIN_TYPE.DIME: ModifierStruct.new(),
 		Modification.COIN_TYPE.QUARTER: ModifierStruct.new()}
 
+var anim_suffix = ""
+
+var look_direction: Vector2
 
 ### Constants
 
 const VENDING_MENU = preload("res://src/ui/vending_menu.tscn")
+
+const PISTOL = preload("res://assets/pistol.png")
+
+const RIFLE = preload("res://assets/rifle.png")
+
+const LAUNCHER = preload("res://assets/launcher.png")
 
 ### ONREADY VARS
 
@@ -72,6 +81,25 @@ func _ready():
 func _physics_process(delta):
 	# Get the input direction as a normalized vector
 	direction = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down")).normalized()
+	
+	look_direction = (get_global_mouse_position() - global_position).normalized()
+	
+	if look_direction.x > 0:
+		$Sprite2D.flip_h = true
+		$GunSprite.flip_h = true
+	elif look_direction.x < 0:
+		$Sprite2D.flip_h = false
+		$GunSprite.flip_h = false
+	
+	if look_direction.y > 0:
+		anim_suffix = ""
+	elif look_direction.y < 0:
+		anim_suffix = "_back"
+	
+	if direction.length() != 0:
+		$AnimationPlayer.play("run" + anim_suffix)
+	else:
+		$AnimationPlayer.play("idle" + anim_suffix)
 	
 	handle_movement(delta)
 
@@ -165,6 +193,8 @@ func _process(delta):
 				pennies -= attack.cost
 			
 			$PennyCooldown.start(max(0.05, attack.cooldown - mods.stat_modifiers[Modification.MODIFY_ATTACK_STAT.COOLDOWN]))
+			
+			$GunSprite.texture = PISTOL
 		
 	if Input.is_action_pressed("dime"):
 		if dimes > 0 and $DimeCooldown.time_left == 0:
@@ -176,6 +206,8 @@ func _process(delta):
 				dimes -= attack.cost
 			
 			$DimeCooldown.start(max(0.05, attack.cooldown - mods.stat_modifiers[Modification.MODIFY_ATTACK_STAT.COOLDOWN]))
+			
+			$GunSprite.texture = RIFLE
 		
 	if Input.is_action_pressed("quarter"):
 		if quarters > 0 and $QuarterCooldown.time_left == 0:
@@ -187,6 +219,8 @@ func _process(delta):
 				quarters -= attack.cost
 			
 			$QuarterCooldown.start(max(0.05, attack.cooldown - mods.stat_modifiers[Modification.MODIFY_ATTACK_STAT.COOLDOWN]))
+			
+			$GunSprite.texture = LAUNCHER
 		
 	hud.update_coins()
 		
