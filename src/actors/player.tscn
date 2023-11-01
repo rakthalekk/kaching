@@ -213,7 +213,7 @@ collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_awono")
 starting_modifications = Array[String](["PennyBullet", "DimeBullet", "QuarterDisk"])
-max_health = 10
+max_health = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 11)
