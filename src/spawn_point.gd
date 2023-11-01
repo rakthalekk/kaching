@@ -15,7 +15,7 @@ func _ready():
 func _process(delta):
 	if !is_instance_valid(get_tree().get_first_node_in_group("player")):
 		return
-	if curr_enemy == null and (get_tree().get_first_node_in_group("player").position - position).length() > OFFSCREEN_PLUSALITTLE:
+	if curr_enemy == null and (get_tree().get_first_node_in_group("player").global_position - global_position).length() > OFFSCREEN_PLUSALITTLE:
 		curr_enemy = ENEMY.instantiate()
-		curr_enemy.position = position
+		curr_enemy.global_position = global_position
 		get_parent().add_child(curr_enemy)
