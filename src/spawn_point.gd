@@ -2,8 +2,8 @@ extends Node2D
 
 const ENEMY = preload("res://src/actors/enemy.tscn")
 
-const OFFSCREEN_PLUSALITTLE = 175
-const OFFSCREEN_PLUSSOMEMORE = 275
+const OFFSCREEN_PLUSALITTLE = 200
+const OFFSCREEN_PLUSSOMEMORE = 300
 
 var curr_enemy = null
 
