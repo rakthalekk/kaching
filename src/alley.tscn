@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d00qm3pieact7" path="res://src/vending_machine.tscn" id="3_cx72a"]
 [ext_resource type="Texture2D" uid="uid://bigoqy8cut88a" path="res://assets/Golden Dragon Tileset.png" id="3_rex0t"]
 [ext_resource type="Texture2D" uid="uid://cnnod76vj50ji" path="res://assets/outside road tileset.png" id="4_is4um"]
-[ext_resource type="PackedScene" uid="uid://dlyn3xqk2i2pe" path="res://src/actors/enemy.tscn" id="4_o4cff"]
+[ext_resource type="PackedScene" uid="uid://cp0x5qnenucw6" path="res://src/spawn_point.tscn" id="7_xkg6w"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_vdyxs"]
 tile_data = PackedInt32Array(0, 2, 0, 65536, 2, 1, 131072, 2, 2, 196608, 2, 3, 1, 65538, 0, 65537, 65538, 1, 196609, 65538, 3, 2, 131074, 1, 131074, 131074, 2, 196610, 131074, 3, 131075, 2, 2, 196611, 2, 3, 4, 196610, 0, 65540, 196610, 1, 196612, 65538, 3, 5, 196610, 2, 65541, 196610, 3, 131077, 131074, 2, 196613, 131074, 3)
@@ -641,6 +641,7 @@ texture = ExtResource("4_is4um")
 10:2/1/modulate = Color(0, 0.0627451, 0.0901961, 1)
 10:2/1/physics_layer_0/linear_velocity = Vector2(0, 0)
 10:2/1/physics_layer_0/angular_velocity = 0.0
+10:2/1/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:0/0 = 0
 11:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 11:0/0/physics_layer_0/angular_velocity = 0.0
@@ -684,99 +685,110 @@ layer_3/tile_data = PackedInt32Array()
 layer_4/tile_data = PackedInt32Array()
 layer_5/tile_data = PackedInt32Array()
 
-[node name="Player" parent="." instance=ExtResource("2_30416")]
-position = Vector2(146, 97)
-
 [node name="Vending Machine" parent="." instance=ExtResource("3_cx72a")]
 position = Vector2(839, 419)
 
-[node name="Enemy" parent="." instance=ExtResource("4_o4cff")]
-position = Vector2(76, 396)
-
-[node name="Enemy2" parent="." instance=ExtResource("4_o4cff")]
-position = Vector2(1201, -99)
-
-[node name="Enemy3" parent="." instance=ExtResource("4_o4cff")]
-position = Vector2(664, 164)
-
-[node name="Enemy4" parent="." instance=ExtResource("4_o4cff")]
-position = Vector2(1207, -40)
-
-[node name="Enemy5" parent="." instance=ExtResource("4_o4cff")]
-position = Vector2(830, -76)
-
-[node name="Enemy6" parent="." instance=ExtResource("4_o4cff")]
-position = Vector2(1084, -98)
-
-[node name="Enemy7" parent="." instance=ExtResource("4_o4cff")]
-position = Vector2(953, -103)
-
-[node name="Enemy8" parent="." instance=ExtResource("4_o4cff")]
-position = Vector2(991, -113)
-
-[node name="Enemy9" parent="." instance=ExtResource("4_o4cff")]
-position = Vector2(1155, -119)
-
-[node name="Enemy10" parent="." instance=ExtResource("4_o4cff")]
-position = Vector2(894, -88)
-
-[node name="Enemy11" parent="." instance=ExtResource("4_o4cff")]
-position = Vector2(1045, -123)
-
-[node name="Enemy12" parent="." instance=ExtResource("4_o4cff")]
-position = Vector2(1126, -21)
-
-[node name="Enemy13" parent="." instance=ExtResource("4_o4cff")]
-position = Vector2(1002, -51)
-
-[node name="Enemy14" parent="." instance=ExtResource("4_o4cff")]
-position = Vector2(904, -29)
-
-[node name="Enemy15" parent="." instance=ExtResource("4_o4cff")]
-position = Vector2(1238, 17)
-
-[node name="Enemy16" parent="." instance=ExtResource("4_o4cff")]
-position = Vector2(939, 9)
-
-[node name="Enemy17" parent="." instance=ExtResource("4_o4cff")]
-position = Vector2(1170, 25)
-
-[node name="Enemy18" parent="." instance=ExtResource("4_o4cff")]
-position = Vector2(1051, 24)
-
-[node name="Enemy19" parent="." instance=ExtResource("4_o4cff")]
-position = Vector2(307, 182)
-
-[node name="Enemy20" parent="." instance=ExtResource("4_o4cff")]
-position = Vector2(163, 256)
-
-[node name="Enemy21" parent="." instance=ExtResource("4_o4cff")]
-position = Vector2(187, 435)
-
-[node name="Enemy22" parent="." instance=ExtResource("4_o4cff")]
-position = Vector2(430, 528)
-
-[node name="Enemy23" parent="." instance=ExtResource("4_o4cff")]
-position = Vector2(591, 647)
-
-[node name="Enemy24" parent="." instance=ExtResource("4_o4cff")]
-position = Vector2(370, 718)
-
-[node name="Enemy25" parent="." instance=ExtResource("4_o4cff")]
-position = Vector2(730, 304)
-
-[node name="Enemy26" parent="." instance=ExtResource("4_o4cff")]
-position = Vector2(711, 449)
-
-[node name="Enemy27" parent="." instance=ExtResource("4_o4cff")]
-position = Vector2(983, 592)
-
-[node name="Enemy28" parent="." instance=ExtResource("4_o4cff")]
-position = Vector2(1135, 406)
-
-[node name="Enemy29" parent="." instance=ExtResource("4_o4cff")]
-position = Vector2(999, 258)
+[node name="Player" parent="." instance=ExtResource("2_30416")]
+position = Vector2(-31, 263)
 
 [node name="FollowCamera" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 process_callback = 0
+
+[node name="SpawnPointHolder" type="Node2D" parent="."]
+
+[node name="SpawnPoint" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(142, 143)
+
+[node name="SpawnPoint2" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(309, 163)
+
+[node name="SpawnPoint3" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(715, 165)
+
+[node name="SpawnPoint4" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(570, 247)
+
+[node name="SpawnPoint5" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(770, 306)
+
+[node name="SpawnPoint6" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(302, 303)
+
+[node name="SpawnPoint7" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(175, 378)
+
+[node name="SpawnPoint8" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(570, 373)
+
+[node name="SpawnPoint9" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(317, 428)
+
+[node name="SpawnPoint10" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(141, 553)
+
+[node name="SpawnPoint11" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(506, 603)
+
+[node name="SpawnPoint12" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(398, 756)
+
+[node name="SpawnPoint13" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(597, 701)
+
+[node name="SpawnPoint14" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(993, 721)
+
+[node name="SpawnPoint15" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(821, 580)
+
+[node name="SpawnPoint16" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(1158, 594)
+
+[node name="SpawnPoint17" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(1265, 432)
+
+[node name="SpawnPoint18" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(1072, 400)
+
+[node name="SpawnPoint19" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(977, 294)
+
+[node name="SpawnPoint20" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(1049, 67)
+
+[node name="SpawnPoint21" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(832, -120)
+
+[node name="SpawnPoint22" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(881, -27)
+
+[node name="SpawnPoint23" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(964, -122)
+
+[node name="SpawnPoint24" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(1049, -50)
+
+[node name="SpawnPoint25" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(1242, -120)
+
+[node name="SpawnPoint26" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(1206, -46)
+
+[node name="SpawnPoint27" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(1131, -119)
+
+[node name="SpawnPoint28" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(1245, 33)
+
+[node name="SpawnPoint29" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(1143, -5)
+
+[node name="SpawnPoint30" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(915, -91)
+
+[node name="SpawnPoint31" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(1185, 67)
+
+[node name="SpawnPoint32" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
+position = Vector2(878, 77)
