@@ -13,6 +13,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if !is_instance_valid(get_tree().get_first_node_in_group("player")):
+		return
 	if curr_enemy == null and (get_tree().get_first_node_in_group("player").position - position).length() > OFFSCREEN_PLUSALITTLE:
 		curr_enemy = ENEMY.instantiate()
 		curr_enemy.position = position
