@@ -7,9 +7,33 @@ var player: Player
 var last_active_heart = 5
 var total_hearts = 5
 
+var penny_timer : Timer
+var dime_timer : Timer
+var quarter_timer : Timer
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+func update_cooldown_bars():
+	if penny_timer.is_stopped():
+		$CooldownBars/PennyBar.visible = false
+	else:
+		$CooldownBars/PennyBar.visible = true
+		$CooldownBars/PennyBar.value = (1 - penny_timer.time_left/penny_timer.wait_time) * 100
+	
+	if dime_timer.is_stopped():
+		$CooldownBars/DimeBar.visible = false
+	else:
+		$CooldownBars/DimeBar.visible = true
+		$CooldownBars/DimeBar.value = (1 - dime_timer.time_left/dime_timer.wait_time) * 100
+	
+	if quarter_timer.is_stopped():
+		$CooldownBars/QuarterBar.visible = false
+	else:
+		$CooldownBars/QuarterBar.visible = true
+		$CooldownBars/QuarterBar.value = (1 - quarter_timer.time_left/quarter_timer.wait_time) * 100
 
 
 func update_coins():
