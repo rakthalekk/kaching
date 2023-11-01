@@ -25,6 +25,8 @@ func _ready():
 	elif rand < 0.6:
 		$Sprite.texture = female
 	
+	$HealthBar.value = 100
+	
 	hurtbox.actor = self
 	super()
 
@@ -88,7 +90,7 @@ func die():
 		hide()
 		
 		var rand = randf()
-		if rand < 0.8:
+		if rand < 0.9:
 			var dollar = DOLLAR_FRAGMENT.instantiate()
 			dollar.global_position = global_position
 			get_parent().add_child(dollar)
@@ -119,4 +121,6 @@ func yowch(damage: int, iframe_time = 0.1):
 	$AudioStreamPlayer2D.stream = load("res://assets/Audio/Zombie Damage/damage %d.wav" % randi_range(1, 10))
 	$AudioStreamPlayer2D.play()
 	$Hitbox/CollisionShape2D.set_deferred("disabled", true)
+	
 	super(damage, iframe_time)
+	$HealthBar.value = health * 100 / max_health

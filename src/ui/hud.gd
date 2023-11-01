@@ -55,8 +55,9 @@ func update_dollar_fragments():
 
 func lose_heart():
 	var heart = $Hearts.get_node("Heart" + str(last_active_heart)) as Heart
-	heart.break_heart()
-	last_active_heart -= 1
+	if heart:
+		heart.break_heart()
+		last_active_heart -= 1
 
 
 func gain_heart():
@@ -65,6 +66,7 @@ func gain_heart():
 	
 	last_active_heart += 1
 	var heart = $Hearts.get_node("Heart" + str(last_active_heart)) as Heart
+	
 	heart.regain_heart()
 
 

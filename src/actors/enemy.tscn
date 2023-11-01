@@ -237,7 +237,6 @@ shape = SubResource("RectangleShape2D_3q8vv")
 texture = ExtResource("5_xcv3i")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-y_sort_enabled = true
 texture = ExtResource("2_y2i0p")
 hframes = 8
 vframes = 2
@@ -248,6 +247,7 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -5.0
 
 [node name="detection" type="Area2D" parent="."]
 visible = false
@@ -273,6 +273,15 @@ script = ExtResource("4_4hwyv")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_2psno")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+modulate = Color(1, 0, 0, 1)
+offset_left = -11.0
+offset_top = -13.0
+offset_right = 11.0
+offset_bottom = -9.0
+value = 50.0
+show_percentage = false
 
 [connection signal="child_entered_tree" from="CollisionShape2D" to="." method="_on_collision_shape_2d_child_entered_tree"]
 [connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]

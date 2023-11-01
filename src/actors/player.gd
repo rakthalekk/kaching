@@ -39,6 +39,8 @@ var anim_suffix = ""
 
 var look_direction: Vector2
 
+var hit_this_frame = false
+
 ### Constants
 
 const VENDING_MENU = preload("res://src/ui/vending_menu.tscn")
@@ -173,16 +175,20 @@ func add_dollar_fragment(num: int = 1):
 
 
 func yowch(damage: int, iframe_time = 0.1):
+	if hit_this_frame:
+		return
+	
 	super(damage, iframe_time)
 	$EffectsAnimation.play("hurt")
 	#$AudioStreamPlayer2D.volume_db = 1.0
 	$AudioStreamPlayer2D.stream = load("res://assets/Audio/Player Damage/lich-damage-%d.mp3" % randi_range(1, 4))
 	$AudioStreamPlayer2D.play()
 	hud.lose_heart()
+	hit_this_frame = true
 
 
 func heal(amount: int = 1):
-	health = max(max_health, health + amount)
+	health = min(max_health, health + amount)
 	hud.gain_heart()
 
 
@@ -194,6 +200,11 @@ func create_attack(attack_name: String) -> Attack:
 	attack.position = self.position
 	get_parent().add_child(attack)
 	return attack
+
+
+func reenable_hurtbox():
+	super()
+	hit_this_frame = false
 
 
 func _process(delta):
@@ -240,7 +251,12 @@ func _process(delta):
 			$QuarterCooldown.start(max(0.05, attack.cooldown - mods.stat_modifiers[Modification.MODIFY_ATTACK_STAT.COOLDOWN]))
 			
 			$GunSprite.texture = LAUNCHER
-		
+	
+	if Input.is_action_just_pressed("nickel"):
+		if nickels > 0 && health < max_health:
+			heal()
+			nickels -= 1
+	
 	hud.update_coins()
 	hud.update_cooldown_bars()
 	

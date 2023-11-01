@@ -14,7 +14,7 @@ position = Vector2(63, 36)
 scale = Vector2(0.34375, 0.3125)
 texture = ExtResource("1_cmhgv")
 script = ExtResource("2_6g46p")
-amount = 2.0
+amount = 1.0
 coin_type = 1
 description = "no way is that jimmy"
 cost = 0.7
@@ -85,3 +85,13 @@ modify_stat = 1
 amount = 1.0
 description = "health upgrade"
 cost = 2.05
+
+[node name="DimeDamage" type="Sprite2D" parent="."]
+position = Vector2(146, 112)
+scale = Vector2(0.34375, 0.3125)
+texture = ExtResource("1_cmhgv")
+script = ExtResource("2_6g46p")
+amount = 2.0
+coin_type = 3
+description = "increases damage of dimes by 2"
+cost = 2.35

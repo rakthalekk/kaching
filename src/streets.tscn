@@ -31,6 +31,7 @@ zoom = Vector2(2, 2)
 process_callback = 0
 
 [node name="SpawnPointHolder" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="SpawnPoint" parent="SpawnPointHolder" instance=ExtResource("6_1bx1c")]
 position = Vector2(337, 321)

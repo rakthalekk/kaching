@@ -676,6 +676,7 @@ metadata/_better_terrain = {
 }
 
 [node name="alley" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_sc0w5")
 
 [node name="Tiles" parent="." instance=ExtResource("1_bln3a")]
@@ -698,6 +699,7 @@ zoom = Vector2(2, 2)
 process_callback = 0
 
 [node name="SpawnPointHolder" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="SpawnPoint" parent="SpawnPointHolder" instance=ExtResource("7_xkg6w")]
 position = Vector2(142, 143)
