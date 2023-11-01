@@ -12,3 +12,8 @@ func _ready():
 func _process(delta):
 	if is_instance_valid(player):
 		follow_camera.position = lerp(follow_camera.position, player.position, delta * 5)
+
+
+func _on_win_area_body_entered(body):
+	if body is Player:
+		body.win()
