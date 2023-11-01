@@ -1,48 +1,53 @@
-[gd_scene load_steps=3 format=3 uid="uid://3ts3ees51q4n"]
+[gd_scene load_steps=6 format=3 uid="uid://3ts3ees51q4n"]
 
 [ext_resource type="Script" path="res://src/ui/vending_menu.gd" id="1_mv774"]
-[ext_resource type="Texture2D" uid="uid://it8hjt58tya5" path="res://icon.svg" id="2_ue6qt"]
+[ext_resource type="Texture2D" uid="uid://b04f4gokok7hx" path="res://assets/vending-ui/ItemInformation.png" id="2_syd3e"]
+[ext_resource type="Texture2D" uid="uid://b1ricpbucax6u" path="res://assets/vending-ui/ItemSelection.png" id="3_kwc8f"]
+[ext_resource type="Texture2D" uid="uid://drwbc1brtda6y" path="res://assets/vending-ui/PurchaseButton.png" id="4_ugq50"]
+[ext_resource type="Texture2D" uid="uid://cxnnrwred6c3l" path="res://assets/vending-ui/PurchasePressed.png" id="5_ijag1"]
 
-[node name="VendingMenu" type="Control"]
-layout_mode = 3
+[node name="VendingMenu" type="MarginContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -4.0
+offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 48
 script = ExtResource("1_mv774")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.490196, 0.490196, 0.490196, 0.537255)
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_syd3e")
+stretch_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("3_kwc8f")
+stretch_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 
 [node name="VBoxContainerLeft" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/VBoxContainerLeft"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 0
 
 [node name="ModificationImage" type="TextureRect" parent="HBoxContainer/VBoxContainerLeft/CenterContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("2_ue6qt")
 
 [node name="NameandType" type="HBoxContainer" parent="HBoxContainer/VBoxContainerLeft"]
 layout_mode = 2
@@ -51,6 +56,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
 text = "Sample Name"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -59,40 +65,68 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
 text = "Sample Type"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ModInfo" type="Label" parent="HBoxContainer/VBoxContainerLeft"]
-unique_name_in_owner = true
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainerLeft"]
 layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = -4
+
+[node name="ModInfo" type="Label" parent="HBoxContainer/VBoxContainerLeft/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 12
 text = "This is sample text that will be replace when we have want to display a gun modification thing"
 horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainerLeft"]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 0
 
 [node name="ModCost" type="Label" parent="HBoxContainer/VBoxContainerLeft/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Cost: "
-horizontal_alignment = 1
+size_flags_vertical = 8
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 12
+text = "        Cost: "
 
-[node name="PurchaseButton" type="Button" parent="HBoxContainer/VBoxContainerLeft/HBoxContainer"]
+[node name="PurchaseButton" type="TextureButton" parent="HBoxContainer/VBoxContainerLeft/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture_normal = ExtResource("4_ugq50")
+texture_pressed = ExtResource("5_ijag1")
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainerLeft/HBoxContainer/PurchaseButton"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -1.0
+offset_right = 78.0
+offset_bottom = 25.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 12
 text = "Purchase"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VBoxContainerRight" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/VBoxContainerRight"]
-custom_minimum_size = Vector2(0, 240)
+custom_minimum_size = Vector2(0, 220)
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -106,9 +140,10 @@ alignment = 1
 custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 10
+size_flags_vertical = 0
 tooltip_text = "Take change and leave"
-texture_normal = ExtResource("2_ue6qt")
+texture_normal = ExtResource("4_ugq50")
+texture_pressed = ExtResource("5_ijag1")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -120,16 +155,18 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -20.0
-offset_top = -11.5
+offset_top = -14.0
 offset_right = 20.0
-offset_bottom = 11.5
+offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 12
 text = "Exit"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainerLeft/HBoxContainer/PurchaseButton" to="." method="_on_purchase_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainerRight/ExitButton" to="." method="_on_exit_button_pressed"]

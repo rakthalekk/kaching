@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dli126qdy01ey"]
+[gd_scene load_steps=23 format=3 uid="uid://dli126qdy01ey"]
 
 [ext_resource type="Script" path="res://src/actors/player.gd" id="1_awono"]
 [ext_resource type="Texture2D" uid="uid://cn3y2ngyen2kv" path="res://assets/dropshadow.png" id="2_32stv"]
@@ -37,6 +37,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GunSprite:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_oliu2"]
@@ -95,6 +119,62 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [5]
+}
+
+[sub_resource type="Animation" id="Animation_pmqvb"]
+resource_name = "roll"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [6.28319, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GunSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [6.28319, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ccrc6"]
+resource_name = "roll_right"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GunSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
 }
 
 [sub_resource type="Animation" id="Animation_p6y1q"]
@@ -160,6 +240,8 @@ _data = {
 "RESET": SubResource("Animation_o7jpr"),
 "idle": SubResource("Animation_oliu2"),
 "idle_back": SubResource("Animation_tdq8o"),
+"roll": SubResource("Animation_pmqvb"),
+"roll_right": SubResource("Animation_ccrc6"),
 "run": SubResource("Animation_p6y1q"),
 "run_back": SubResource("Animation_vjn54")
 }
@@ -214,6 +296,13 @@ motion_mode = 1
 script = ExtResource("1_awono")
 starting_modifications = Array[String](["PennyBullet", "DimeBullet", "QuarterDisk"])
 max_health = 5
+
+[node name="LaserSight" type="Line2D" parent="."]
+visible = false
+position = Vector2(0, 3)
+points = PackedVector2Array(0, 0, 200, 0)
+width = 1.0
+default_color = Color(0, 1, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 11)
@@ -295,6 +384,9 @@ shape = SubResource("RectangleShape2D_up82c")
 [node name="PauseHandler" type="Node" parent="."]
 process_mode = 3
 script = ExtResource("6_2faxl")
+
+[node name="RollCooldown" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="body_entered" from="InteractableArea" to="." method="_on_interactable_area_body_entered"]
 [connection signal="timeout" from="InteractableArea/InteractTimer" to="." method="_on_interact_timer_timeout"]

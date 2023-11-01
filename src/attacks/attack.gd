@@ -21,6 +21,11 @@ func _ready():
 	add_child(active_timer)
 	active_timer.one_shot = true
 	active_timer.connect("timeout", destroy_self)
+	activate_timer()
+
+
+func activate_timer():
+	await ready
 	active_timer.start(duration + duration_modifier)
 
 
@@ -36,8 +41,8 @@ func populate_modifiers(mod: Player.ModifierStruct):
 	knockback_modifier = mod.stat_modifiers[Modification.MODIFY_ATTACK_STAT.KNOCKBACK]
 	duration_modifier = mod.stat_modifiers[Modification.MODIFY_ATTACK_STAT.DURATION]
 	
-	# Restars timer with new duration modifier
-	active_timer.start(duration + duration_modifier)
+	# Restarts timer with new duration modifier
+	activate_timer()
 
 
 func set_direction(dir: Vector2):

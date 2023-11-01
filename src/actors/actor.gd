@@ -34,15 +34,17 @@ func yowch(damage: int, iframe_time = 0.1):
 
 
 func handle_movement(delta):
+	calculate_velocity(delta)
+	check_knockback(delta)
+	move_and_slide()
+
+
+func calculate_velocity(delta):
 	if knockback_velocity.length() < 100:
 		# Calculates velocity and applies it
 		velocity = direction * speed
 	else:
 		velocity = Vector2.ZERO
-		
-	check_knockback(delta)
-	
-	move_and_slide()
 
 
 func check_knockback(delta):

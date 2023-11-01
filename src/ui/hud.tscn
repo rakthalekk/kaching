@@ -93,11 +93,12 @@ size_flags_vertical = 8
 layout_mode = 2
 text = "Dollars: 0"
 
-[node name="Hearts" type="ColorRect" parent="."]
+[node name="Hearts" type="Control" parent="."]
+custom_minimum_size = Vector2(135, 0)
 layout_mode = 1
-offset_right = 92.0
-offset_bottom = 29.0
-color = Color(0.960784, 0.960784, 0.960784, 0)
+anchors_preset = 0
+offset_right = 140.0
+offset_bottom = 40.0
 
 [node name="Heart1" parent="Hearts" instance=ExtResource("2_d0rdf")]
 position = Vector2(13, 14)

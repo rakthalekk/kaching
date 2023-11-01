@@ -20,8 +20,6 @@ func _process(delta):
 		raycast.enabled = false
 	
 	frames_since_init += 1
-	
-	$TrailAnchor.position += direction * 200 * delta
 
 
 func set_direction(dir: Vector2):

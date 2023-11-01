@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://c23hjcdwrvd21"]
+[gd_scene load_steps=3 format=3 uid="uid://c23hjcdwrvd21"]
 
 [ext_resource type="Script" path="res://src/attacks/penny_bullet.gd" id="1_ddrm5"]
-[ext_resource type="PackedScene" uid="uid://bvjt17rw6k3n3" path="res://src/trail_2d.tscn" id="2_75eqw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_03nkt"]
 radius = 2.0
@@ -28,10 +27,4 @@ collide_with_areas = true
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(0, 0)
 width = 1.0
-default_color = Color(0.447059, 0.905882, 0.14902, 1)
-
-[node name="TrailAnchor" type="Node2D" parent="."]
-
-[node name="Trail2D" parent="TrailAnchor" instance=ExtResource("2_75eqw")]
-width = 5.0
-is_emitting = true
+default_color = Color(0.909804, 0.145098, 0.145098, 1)

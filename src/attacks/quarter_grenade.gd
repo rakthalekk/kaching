@@ -25,6 +25,11 @@ func _ready():
 	super()
 
 
+func activate_timer():
+	await ready
+	active_timer.start(duration)
+
+
 func set_direction(dir: Vector2):
 	pass
 
@@ -49,7 +54,7 @@ func destroy_self():
 	$ExplosionRadius/CollisionShape2D.disabled = false
 	$ExplosionRadius.visible = true
 	$Sprite2D.hide()
-	$ExplosionRadius/ExplosionTimer.start()
+	$ExplosionRadius/ExplosionTimer.start(0.5 + duration_modifier)
 	
 	$ExplosionRadius/Sprite2D.play("default")
 	$Boom.play()

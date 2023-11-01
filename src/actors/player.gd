@@ -41,6 +41,11 @@ var look_direction: Vector2
 
 var hit_this_frame = false
 
+var rolling = false
+
+var roll_unlocked = false
+var laser_sight_unlocked = false
+
 ### Constants
 
 const VENDING_MENU = preload("res://src/ui/vending_menu.tscn")
@@ -82,6 +87,10 @@ func _ready():
 	
 	update_modifications()
 	
+	penny_equip = attack_modifications[Modification.COIN_TYPE.PENNY][0]
+	dime_equip = attack_modifications[Modification.COIN_TYPE.DIME][0]
+	quarter_equip = attack_modifications[Modification.COIN_TYPE.QUARTER][0]
+	
 	super()
 
 func die():
@@ -92,28 +101,39 @@ func die():
 
 func _physics_process(delta):
 	# Get the input direction as a normalized vector
-	direction = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down")).normalized()
+	if !rolling:
+		direction = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down")).normalized()
+		
+		look_direction = (get_global_mouse_position() - global_position).normalized()
 	
-	look_direction = (get_global_mouse_position() - global_position).normalized()
+		if look_direction.x > 0:
+			$Sprite2D.flip_h = true
+			$GunSprite.flip_h = true
+		elif look_direction.x < 0:
+			$Sprite2D.flip_h = false
+			$GunSprite.flip_h = false
+		
+		if look_direction.y > 0:
+			anim_suffix = ""
+		elif look_direction.y < 0:
+			anim_suffix = "_back"
 	
-	if look_direction.x > 0:
-		$Sprite2D.flip_h = true
-		$GunSprite.flip_h = true
-	elif look_direction.x < 0:
-		$Sprite2D.flip_h = false
-		$GunSprite.flip_h = false
-	
-	if look_direction.y > 0:
-		anim_suffix = ""
-	elif look_direction.y < 0:
-		anim_suffix = "_back"
-	
-	if direction.length() != 0:
-		$AnimationPlayer.play("run" + anim_suffix)
-	else:
-		$AnimationPlayer.play("idle" + anim_suffix)
+		if direction.length() != 0:
+			$AnimationPlayer.play("run" + anim_suffix)
+		else:
+			$AnimationPlayer.play("idle" + anim_suffix)
 	
 	handle_movement(delta)
+
+
+func calculate_velocity(delta):
+	if rolling:
+		velocity = direction * speed * 1.5
+	elif knockback_velocity.length() < 100:
+		# Calculates velocity and applies it
+		velocity = direction * speed
+	else:
+		velocity = Vector2.ZERO
 
 
 func update_modifications():
@@ -132,13 +152,20 @@ func update_modifications():
 			attack_modifications[mod.coin_type].append(mod.attack_name)
 		elif mod is PlayerStatModification:
 			if mod.modify_stat == Modification.MODIFY_PLAYER_STAT.HEALTH:
-				max_health += 1
+				max_health += mod.amount
 				hud.upgrade_health()
 				modifications.erase(mod)
-	
-	penny_equip = attack_modifications[Modification.COIN_TYPE.PENNY][0]
-	dime_equip = attack_modifications[Modification.COIN_TYPE.DIME][0]
-	quarter_equip = attack_modifications[Modification.COIN_TYPE.QUARTER][0]
+			elif mod.modify_stat == Modification.MODIFY_PLAYER_STAT.SPEED:
+				speed += mod.amount
+				modifications.erase(mod)
+		elif mod is SpecialModification:
+			if mod.type == Modification.MODIFY_SPECIAL.ROLL:
+				roll_unlocked = true
+				modifications.erase(mod)
+			if mod.type == Modification.MODIFY_SPECIAL.LASER_SIGHT:
+				laser_sight_unlocked = true
+				$LaserSight.show()
+				modifications.erase(mod)
 
 
 func add_modification(mod: Modification):
@@ -206,11 +233,11 @@ func heal(amount: int = 1):
 
 
 func create_attack(attack_name: String) -> Attack:
-	var shoot_vector = get_global_mouse_position() - global_position
+	var shoot_vector = get_global_mouse_position() - (global_position + Vector2(0, 3))
 	var path = "res://src/attacks/" + attack_name + ".tscn"
 	var attack = load(path).instantiate() as Attack
 	attack.set_direction(shoot_vector.normalized())
-	attack.position = self.position
+	attack.position = self.position + Vector2(0, 3)
 	get_parent().add_child(attack)
 	return attack
 
@@ -273,10 +300,27 @@ func _process(delta):
 	hud.update_coins()
 	hud.update_cooldown_bars()
 	
-	
 	if Input.is_action_just_pressed("interact"):
 		%InteractableArea.monitoring = true
 		$InteractableArea/InteractTimer.start()
+	
+	if Input.is_action_just_pressed("roll") && !rolling && $RollCooldown.is_stopped() && roll_unlocked:
+		rolling = true
+		if direction.x > 0:
+			$AnimationPlayer.play("roll_right")
+		else:
+			$AnimationPlayer.play("roll")
+		
+		disable_hurtbox()
+		await $AnimationPlayer.animation_finished
+		reenable_hurtbox()
+		rolling = false
+		$RollCooldown.start()
+	
+	if Input.is_action_just_pressed("toggle_laser_sight") && laser_sight_unlocked:
+		$LaserSight.visible = !$LaserSight.visible
+	
+	$LaserSight.set_point_position(1, (get_global_mouse_position() - global_position - Vector2(0, 3)).normalized() * 200)
 
 
 func _on_interactable_area_body_entered(body):

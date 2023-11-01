@@ -7,8 +7,7 @@ var menu : VendingMenu
 
 func set_mod(mod: Modification):
 	modification = mod
-	$NameText.text = modification.name
-	tooltip_text = modification.description
+	$NameText.text = modification.display_name
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

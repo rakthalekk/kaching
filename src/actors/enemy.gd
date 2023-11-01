@@ -33,7 +33,7 @@ func _ready():
 
 func _physics_process(delta):
 	if chase && !dead:
-		direction = (player.position - position).normalized()
+		direction = (player.global_position - global_position).normalized()
 	else:
 		direction = Vector2.ZERO
 	
@@ -94,6 +94,9 @@ func die():
 			var dollar = DOLLAR_FRAGMENT.instantiate()
 			dollar.global_position = global_position
 			get_parent().add_child(dollar)
+			print("adnsaodnaoisund")
+			print(global_position)
+			print(get_tree().get_first_node_in_group("player").global_position)
 		else:
 			var health = HEALTH_PICKUP.instantiate()
 			health.global_position = global_position
