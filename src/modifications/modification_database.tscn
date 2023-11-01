@@ -26,7 +26,6 @@ script = ExtResource("3_5ppbn")
 attack_name = "penny_bullet"
 coin_type = 1
 description = "penny bullet"
-cost = 1.0
 
 [node name="PennyShotgun" type="Sprite2D" parent="."]
 position = Vector2(195, 38)
@@ -36,7 +35,7 @@ script = ExtResource("3_5ppbn")
 attack_name = "penny_shotgun"
 coin_type = 1
 description = "penny shotgun"
-cost = 5.0
+cost = 1.25
 
 [node name="DimeBullet" type="Sprite2D" parent="."]
 position = Vector2(263, 41)
@@ -46,7 +45,6 @@ script = ExtResource("3_5ppbn")
 attack_name = "dime_bullet"
 coin_type = 3
 description = "dime bullet"
-cost = 1.0
 
 [node name="DimeLaser" type="Sprite2D" parent="."]
 position = Vector2(337, 40)
@@ -56,7 +54,7 @@ script = ExtResource("3_5ppbn")
 attack_name = "dime_laser"
 coin_type = 3
 description = "dime laser"
-cost = 1.0
+cost = 3.34
 
 [node name="QuarterDisk" type="Sprite2D" parent="."]
 position = Vector2(418, 43)
@@ -66,7 +64,6 @@ script = ExtResource("3_5ppbn")
 attack_name = "quarter_disk"
 coin_type = 4
 description = "quarter disk"
-cost = 1.0
 
 [node name="QuarterGrenade" type="Sprite2D" parent="."]
 position = Vector2(504, 43)
@@ -76,4 +73,4 @@ script = ExtResource("3_5ppbn")
 attack_name = "quarter_grenade"
 coin_type = 4
 description = "quarter grenade"
-cost = 1.0
+cost = 6.09

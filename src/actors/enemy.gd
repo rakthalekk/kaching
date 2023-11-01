@@ -53,6 +53,16 @@ func _physics_process(delta):
 	handle_movement(delta)
 
 
+func check_knockback(delta):
+	if knockback:
+		velocity += knockback_velocity
+		knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, delta * knockback_friction)
+		if knockback_velocity.length() <= 0:
+			knockback = false
+			if !dead:
+				$Hitbox/CollisionShape2D.set_deferred("disabled", false)
+
+
 func _on_detection_body_entered(body):
 	if body is Player:
 		player = body
@@ -72,6 +82,7 @@ func die():
 		
 		dead = true
 		await $AnimationPlayer.animation_finished
+		
 		hide()
 		var dollar = DOLLAR_FRAGMENT.instantiate()
 		dollar.global_position = global_position
@@ -79,8 +90,6 @@ func die():
 		
 		if ($AudioStreamPlayer2D.playing):
 			await $AudioStreamPlayer2D.finished
-		
-		
 		
 		super()
 
@@ -93,13 +102,12 @@ func _on_detection_body_exited(body):
 func _on_hitbox_area_entered(area):
 	if area is Hurtbox and !knockback:
 		var body = area.actor
-		body.yowch(damage)
+		body.yowch(damage, 0.6)
 		body.take_knockback(global_position, knockback_force)
 
 
 func yowch(damage: int, iframe_time = 0.1):
 	$AudioStreamPlayer2D.stream = load("res://assets/Audio/Zombie Damage/damage %d.wav" % randi_range(1, 10))
 	$AudioStreamPlayer2D.play()
+	$Hitbox/CollisionShape2D.set_deferred("disabled", true)
 	super(damage, iframe_time)
-
-
