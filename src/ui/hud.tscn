@@ -16,6 +16,57 @@ size_flags_horizontal = 2
 size_flags_vertical = 3
 script = ExtResource("1_jqu18")
 
+[node name="CooldownBars" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 2.0
+offset_top = 301.0
+offset_right = 180.0
+offset_bottom = 312.0
+
+[node name="PennyBar" type="ProgressBar" parent="CooldownBars"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+offset_right = 42.0
+offset_bottom = 11.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+show_percentage = false
+
+[node name="NickelBar" type="ProgressBar" parent="CooldownBars"]
+visible = false
+modulate = Color(0, 0, 1, 1)
+layout_mode = 2
+offset_left = 45.0
+offset_right = 87.0
+offset_bottom = 11.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+show_percentage = false
+
+[node name="DimeBar" type="ProgressBar" parent="CooldownBars"]
+modulate = Color(0, 0.407843, 0, 1)
+layout_mode = 2
+offset_left = 90.0
+offset_right = 131.0
+offset_bottom = 11.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+show_percentage = false
+
+[node name="QuarterBar" type="ProgressBar" parent="CooldownBars"]
+modulate = Color(0.859017, 0.371499, 0.163217, 1)
+layout_mode = 2
+offset_left = 137.0
+offset_right = 178.0
+offset_bottom = 11.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+show_percentage = false
+
 [node name="Dollars" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 12

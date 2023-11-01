@@ -64,6 +64,9 @@ var quarter_equip: String
 func _ready():
 	hud.show()
 	hud.player = self
+	hud.penny_timer = $PennyCooldown
+	hud.dime_timer = $DimeCooldown
+	hud.quarter_timer = $QuarterCooldown
 	hud.update_coins()
 	hud.update_dollar_fragments()
 	
@@ -239,7 +242,8 @@ func _process(delta):
 			$GunSprite.texture = LAUNCHER
 		
 	hud.update_coins()
-
+	hud.update_cooldown_bars()
+	
 	
 	if Input.is_action_just_pressed("interact"):
 		%InteractableArea.monitoring = true
