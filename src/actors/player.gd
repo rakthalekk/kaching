@@ -19,13 +19,13 @@ class ModifierStruct:
 ### LOCAL VARS
 
 # Current number of each coin
-var pennies := 300
-var nickels := 300
-var dimes := 300
-var quarters := 300
+var pennies := 30
+var nickels := 3
+var dimes := 5
+var quarters := 2
 
 var dollar_fragments = 0
-var dollars = 300
+var dollars = 11
 
 var modifications: Array[Modification]
 
