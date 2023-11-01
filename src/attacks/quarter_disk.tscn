@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://src/attacks/quarter_disk.gd" id="1_33r23"]
 [ext_resource type="Texture2D" uid="uid://bnvwojqnbvrce" path="res://assets/sprites/quality_quarter.png" id="2_g333e"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7wk7v"]
-size = Vector2(123, 126)
+[sub_resource type="CircleShape2D" id="CircleShape2D_xuoab"]
+radius = 59.0339
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0u4u0"]
-radius = 40.0125
+radius = 31.0
 
 [sub_resource type="Animation" id="Animation_le2rn"]
 length = 0.001
@@ -58,14 +58,13 @@ cooldown = 2.0
 duration = 3.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_g333e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0.5, 1)
 scale = Vector2(0.5, 0.5)
-shape = SubResource("RectangleShape2D_7wk7v")
+shape = SubResource("CircleShape2D_xuoab")
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
