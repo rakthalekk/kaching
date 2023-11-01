@@ -7,6 +7,10 @@ var player: Player
 
 const MOD_TILE = preload("res://src/ui/equip_mod_tile.tscn")
 
+@onready var penny_mod_list = %PennyModList
+@onready var dime_mod_list = %DimeModList
+@onready var quarter_mod_list = %QuarterModList
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

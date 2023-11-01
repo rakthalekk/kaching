@@ -50,16 +50,16 @@ func update_coins():
 
 func update_dollar_fragments(anim_name):
 	if (anim_name == "complete_bill"):
-		$Dollars/DollarFragUI.complete_bill()
+		$DollarFragUI.complete_bill()
 	if (anim_name == "1_frag"):
-		$Dollars/DollarFragUI.get_anim_player().play("1_frag")
+		$DollarFragUI.get_anim_player().play("1_frag")
 	if (anim_name == "2_frag"):
-		$Dollars/DollarFragUI.get_anim_player().play("2_frag")
+		$DollarFragUI.get_anim_player().play("2_frag")
 	
-	if $Dollars/DollarFragUI.anim_player.is_playing():
-		await $Dollars/DollarFragUI.anim_player.animation_finished
+	if $DollarFragUI.anim_player.is_playing():
+		await $DollarFragUI.anim_player.animation_finished
 	
-	$Dollars/Dollars.text = "Dollars: %d" % player.dollars
+	$Dollars.text = "$%d" % player.dollars
 
 
 func lose_heart():
