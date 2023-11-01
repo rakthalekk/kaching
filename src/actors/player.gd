@@ -45,6 +45,8 @@ var hit_this_frame = false
 
 const VENDING_MENU = preload("res://src/ui/vending_menu.tscn")
 
+const GAME_OVER = preload("res://src/ui/game_over.tscn")
+
 const PISTOL = preload("res://assets/pistol.png")
 
 const RIFLE = preload("res://assets/rifle.png")
@@ -81,6 +83,11 @@ func _ready():
 	update_modifications()
 	
 	super()
+
+func die():
+	var game_over = GAME_OVER.instantiate()
+	get_node("UI/HUD").add_child(game_over)
+	get_tree().paused = true
 
 
 func _physics_process(delta):
