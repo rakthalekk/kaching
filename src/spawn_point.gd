@@ -17,10 +17,10 @@ func _process(delta):
 	if !is_instance_valid(get_tree().get_first_node_in_group("player")):
 		return
 	var player := get_tree().get_first_node_in_group("player") as Player
-	var player_pos = player.position
-	if curr_enemy == null and (player_pos - position).length() > OFFSCREEN_PLUSALITTLE and (player_pos - position).length() < OFFSCREEN_PLUSSOMEMORE:
+	var player_pos = player.global_position
+	if curr_enemy == null and (player_pos - global_position).length() > OFFSCREEN_PLUSALITTLE and (player_pos - position).length() < OFFSCREEN_PLUSSOMEMORE:
 		curr_enemy = ENEMY.instantiate()
-		curr_enemy.position = position
+		curr_enemy.global_position = global_position
 		get_parent().add_child(curr_enemy)
-	if curr_enemy != null and (player_pos - curr_enemy.position).length() >= OFFSCREEN_PLUSSOMEMORE:
+	if curr_enemy != null and (player_pos - curr_enemy.global_position).length() >= OFFSCREEN_PLUSSOMEMORE:
 		curr_enemy.queue_free()
