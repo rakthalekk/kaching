@@ -95,6 +95,13 @@ func _ready():
 
 func die():
 	var game_over = GAME_OVER.instantiate()
+	game_over.win = false
+	get_node("UI/HUD").add_child(game_over)
+	get_tree().paused = true
+
+func win():
+	var game_over = GAME_OVER.instantiate()
+	game_over.win = true
 	get_node("UI/HUD").add_child(game_over)
 	get_tree().paused = true
 
