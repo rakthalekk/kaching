@@ -24,7 +24,36 @@ layer_5/tile_data = PackedInt32Array(1376224, 1, 1, 1441760, 65537, 1, 1376225, 
 position = Vector2(-666, 320)
 
 [node name="Vending Machine" parent="." instance=ExtResource("4_chwc5")]
-position = Vector2(129, 576)
+position = Vector2(-277, 280)
+modifications = Array[String](["PennyShotgun", "RollUpgrade"])
+
+[node name="Vending Machine2" parent="." instance=ExtResource("4_chwc5")]
+position = Vector2(-94, 502)
+modifications = Array[String](["DimeFireRate", "QuarterConserve"])
+
+[node name="Vending Machine3" parent="." instance=ExtResource("4_chwc5")]
+position = Vector2(-151, 210)
+modifications = Array[String](["HealthUpgrade", "DimeDamage"])
+
+[node name="Vending Machine4" parent="." instance=ExtResource("4_chwc5")]
+position = Vector2(523, 289)
+modifications = Array[String](["SpeedUpgrade", "PennyConserve"])
+
+[node name="Vending Machine5" parent="." instance=ExtResource("4_chwc5")]
+position = Vector2(568, 561)
+modifications = Array[String](["QuarterGrenade", "LaserSight", "DimeDuration"])
+
+[node name="Vending Machine6" parent="." instance=ExtResource("4_chwc5")]
+position = Vector2(1320, 497)
+modifications = Array[String](["HealthUpgrade2", "Jimmy", "QuarterDuration"])
+
+[node name="Vending Machine7" parent="." instance=ExtResource("4_chwc5")]
+position = Vector2(1526, 466)
+modifications = Array[String](["PennyFireRate", "DimeLaser", "SpeedUpgrade"])
+
+[node name="Vending Machine8" parent="." instance=ExtResource("4_chwc5")]
+position = Vector2(1525, 571)
+modifications = Array[String](["DimeConserve", "QuarterDamage", "QuarterFireRate"])
 
 [node name="FollowCamera" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)

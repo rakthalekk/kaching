@@ -2,7 +2,8 @@ extends Node2D
 
 const ENEMY = preload("res://src/actors/enemy.tscn")
 
-const OFFSCREEN_PLUSALITTLE = 175
+const OFFSCREEN_PLUSALITTLE = 200
+const OFFSCREEN_PLUSSOMEMORE = 300
 
 var curr_enemy = null
 
@@ -15,7 +16,11 @@ func _ready():
 func _process(delta):
 	if !is_instance_valid(get_tree().get_first_node_in_group("player")):
 		return
-	if curr_enemy == null and (get_tree().get_first_node_in_group("player").global_position - global_position).length() > OFFSCREEN_PLUSALITTLE:
+	var player := get_tree().get_first_node_in_group("player") as Player
+	var player_pos = player.global_position
+	if curr_enemy == null and (player_pos - global_position).length() > OFFSCREEN_PLUSALITTLE and (player_pos - global_position).length() < OFFSCREEN_PLUSSOMEMORE:
 		curr_enemy = ENEMY.instantiate()
 		curr_enemy.global_position = global_position
 		get_parent().add_child(curr_enemy)
+	if curr_enemy != null and (player_pos - curr_enemy.global_position).length() >= OFFSCREEN_PLUSSOMEMORE:
+		curr_enemy.queue_free()
