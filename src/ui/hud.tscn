@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://devsngfnkumin"]
+[gd_scene load_steps=6 format=3 uid="uid://devsngfnkumin"]
 
 [ext_resource type="Script" path="res://src/ui/hud.gd" id="1_jqu18"]
 [ext_resource type="PackedScene" uid="uid://8n12xxcvx22p" path="res://src/ui/heart.tscn" id="2_d0rdf"]
+[ext_resource type="PackedScene" uid="uid://d0sy1fyond2n2" path="res://src/ui/dollar_frag_ui.tscn" id="2_dgyvw"]
 [ext_resource type="Texture2D" uid="uid://dy870hgpgdhtf" path="res://assets/sprites/HUD coin wrap.png" id="2_kqxaa"]
 [ext_resource type="Texture2D" uid="uid://boxc12ut5npd7" path="res://assets/sprites/HUD coin wrap shading.png" id="3_abu3q"]
 
@@ -79,11 +80,14 @@ grow_vertical = 0
 size_flags_horizontal = 6
 size_flags_vertical = 2
 
+[node name="DollarFragUI" parent="Dollars" instance=ExtResource("2_dgyvw")]
+position = Vector2(607, -13)
+scale = Vector2(2, 2)
+
 [node name="DollarFragments" type="Label" parent="Dollars"]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 8
-text = "Dollar Fragments: 0"
 
 [node name="Dollars" type="Label" parent="Dollars"]
 layout_mode = 2

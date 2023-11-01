@@ -50,6 +50,8 @@ var laser_sight_unlocked = false
 
 const VENDING_MENU = preload("res://src/ui/vending_menu.tscn")
 
+const GAME_OVER = preload("res://src/ui/game_over.tscn")
+
 const PISTOL = preload("res://assets/pistol.png")
 
 const RIFLE = preload("res://assets/rifle.png")
@@ -75,7 +77,7 @@ func _ready():
 	hud.dime_timer = $DimeCooldown
 	hud.quarter_timer = $QuarterCooldown
 	hud.update_coins()
-	hud.update_dollar_fragments()
+	hud.update_dollar_fragments("")
 	
 	hurtbox.actor = self
 	equip_menu.player = self
@@ -90,6 +92,11 @@ func _ready():
 	quarter_equip = attack_modifications[Modification.COIN_TYPE.QUARTER][0]
 	
 	super()
+
+func die():
+	var game_over = GAME_OVER.instantiate()
+	get_node("UI/HUD").add_child(game_over)
+	get_tree().paused = true
 
 
 func _physics_process(delta):
@@ -189,16 +196,22 @@ func return_coins(change: int):
 		change -= 1
 	
 	hud.update_coins()
-	hud.update_dollar_fragments()
+	hud.update_dollar_fragments("")
 	return returned_coins
 
 
 func add_dollar_fragment(num: int = 1):
 	dollar_fragments += num
+	var complete_bill = false
 	while dollar_fragments >= 3:
 		dollar_fragments -= 3
 		dollars += 1
-	hud.update_dollar_fragments()
+		complete_bill = true;
+	
+	if (complete_bill):
+		hud.update_dollar_fragments("complete_bill")
+	else:
+		hud.update_dollar_fragments("%d_frag" % dollar_fragments)
 
 
 func yowch(damage: int, iframe_time = 0.1):
