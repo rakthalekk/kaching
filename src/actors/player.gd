@@ -170,6 +170,12 @@ func yowch(damage: int, iframe_time = 0.1):
 	#$AudioStreamPlayer2D.volume_db = 1.0
 	$AudioStreamPlayer2D.stream = load("res://assets/Audio/Player Damage/lich-damage-%d.mp3" % randi_range(1, 4))
 	$AudioStreamPlayer2D.play()
+	hud.lose_heart()
+
+
+func heal(amount: int = 1):
+	health = max(max_health, health + amount)
+	hud.gain_heart()
 
 
 func create_attack(attack_name: String) -> Attack:

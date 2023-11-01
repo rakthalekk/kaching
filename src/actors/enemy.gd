@@ -15,6 +15,8 @@ var anim_suffix = ""
 # Reference to penny bullet instance that player can instantiate
 const DOLLAR_FRAGMENT = preload("res://src/dollar_fragment.tscn")
 
+const HEALTH_PICKUP = preload("res://src/health_pickup.tscn")
+
 
 func _ready():
 	var rand = randf()
@@ -84,9 +86,16 @@ func die():
 		await $AnimationPlayer.animation_finished
 		
 		hide()
-		var dollar = DOLLAR_FRAGMENT.instantiate()
-		dollar.global_position = global_position
-		get_parent().add_child(dollar)
+		
+		var rand = randf()
+		if rand < 0.8:
+			var dollar = DOLLAR_FRAGMENT.instantiate()
+			dollar.global_position = global_position
+			get_parent().add_child(dollar)
+		else:
+			var health = HEALTH_PICKUP.instantiate()
+			health.global_position = global_position
+			get_parent().add_child(health)
 		
 		if ($AudioStreamPlayer2D.playing):
 			await $AudioStreamPlayer2D.finished
@@ -102,7 +111,7 @@ func _on_detection_body_exited(body):
 func _on_hitbox_area_entered(area):
 	if area is Hurtbox and !knockback:
 		var body = area.actor
-		body.yowch(damage, 0.6)
+		body.yowch(damage, 1)
 		body.take_knockback(global_position, knockback_force)
 
 
