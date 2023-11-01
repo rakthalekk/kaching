@@ -7,7 +7,7 @@ var menu : VendingMenu
 
 func set_mod(mod: Modification):
 	modification = mod
-	$NameText.text = modification.name
+	$NameText.text = modification.display_name
 	tooltip_text = modification.description
 
 

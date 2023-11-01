@@ -80,6 +80,10 @@ func _ready():
 	
 	update_modifications()
 	
+	penny_equip = attack_modifications[Modification.COIN_TYPE.PENNY][0]
+	dime_equip = attack_modifications[Modification.COIN_TYPE.DIME][0]
+	quarter_equip = attack_modifications[Modification.COIN_TYPE.QUARTER][0]
+	
 	super()
 
 
@@ -125,13 +129,12 @@ func update_modifications():
 			attack_modifications[mod.coin_type].append(mod.attack_name)
 		elif mod is PlayerStatModification:
 			if mod.modify_stat == Modification.MODIFY_PLAYER_STAT.HEALTH:
-				max_health += 1
+				max_health += mod.amount
 				hud.upgrade_health()
 				modifications.erase(mod)
-	
-	penny_equip = attack_modifications[Modification.COIN_TYPE.PENNY][0]
-	dime_equip = attack_modifications[Modification.COIN_TYPE.DIME][0]
-	quarter_equip = attack_modifications[Modification.COIN_TYPE.QUARTER][0]
+			elif mod.modify_stat == Modification.MODIFY_PLAYER_STAT.SPEED:
+				speed += mod.amount
+				modifications.erase(mod)
 
 
 func add_modification(mod: Modification):

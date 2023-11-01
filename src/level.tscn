@@ -48,7 +48,7 @@ position = Vector2(881, 166)
 
 [node name="Vending Machine" parent="." instance=ExtResource("8_yf6nm")]
 position = Vector2(456, 0)
-modifications = Array[String](["Jimmy", "HealthUpgrade", "PennyShotgun", "DimeLaser", "QuarterGrenade", "DimeDamage"])
+modifications = Array[String](["PennyShotgun", "Jimmy", "PennyConserve", "PennyFireRate", "DimeLaser", "DimeDamage", "DimeFireRate", "DimeDuration", "DimeConserve", "QuarterGrenade", "QuarterConserve", "QuarterFireRate", "QuarterDuration", "QuarterDamage", "HealthUpgrade", "HealthUpgrade", "SpeedUpgrade", "SpeedUpgrade"])
 
 [node name="Player" parent="." instance=ExtResource("1_jpbdj")]
 position = Vector2(190, 39)

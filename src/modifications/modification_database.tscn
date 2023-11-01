@@ -16,8 +16,9 @@ texture = ExtResource("1_cmhgv")
 script = ExtResource("2_6g46p")
 amount = 1.0
 coin_type = 1
+display_name = "Jimmy"
 description = "no way is that jimmy"
-cost = 0.7
+cost = 4.05
 
 [node name="PennyBullet" type="Sprite2D" parent="."]
 position = Vector2(137, 41)
@@ -26,6 +27,7 @@ texture = ExtResource("1_cmhgv")
 script = ExtResource("3_5ppbn")
 attack_name = "penny_bullet"
 coin_type = 1
+display_name = "Penny Bullet"
 description = "penny bullet"
 
 [node name="PennyShotgun" type="Sprite2D" parent="."]
@@ -35,63 +37,187 @@ texture = ExtResource("1_cmhgv")
 script = ExtResource("3_5ppbn")
 attack_name = "penny_shotgun"
 coin_type = 1
-description = "penny shotgun"
+display_name = "Penny Shotgun"
+description = "A short-ranged burst of penny bullets"
 cost = 1.25
 
+[node name="PennyConserve" type="Sprite2D" parent="."]
+position = Vector2(274, 39)
+scale = Vector2(0.34375, 0.3125)
+texture = ExtResource("1_cmhgv")
+script = ExtResource("2_6g46p")
+modify_stat = 6
+amount = 0.25
+coin_type = 1
+display_name = "Penny Conserve Chance"
+description = "25% chance not to consume a penny on fire"
+cost = 3.22
+
+[node name="PennyFireRate" type="Sprite2D" parent="."]
+position = Vector2(343, 40)
+scale = Vector2(0.34375, 0.3125)
+texture = ExtResource("1_cmhgv")
+script = ExtResource("2_6g46p")
+modify_stat = 4
+amount = 0.1
+coin_type = 1
+display_name = "Penny Fire Rate Up"
+description = "Increases the fire rate of penny attacks"
+cost = 4.15
+
 [node name="DimeBullet" type="Sprite2D" parent="."]
-position = Vector2(263, 41)
+position = Vector2(65, 130)
 scale = Vector2(0.34375, 0.3125)
 texture = ExtResource("1_cmhgv")
 script = ExtResource("3_5ppbn")
 attack_name = "dime_bullet"
 coin_type = 3
+display_name = "Dime Bullet"
 description = "dime bullet"
 
 [node name="DimeLaser" type="Sprite2D" parent="."]
-position = Vector2(337, 40)
+position = Vector2(130, 127)
 scale = Vector2(0.34375, 0.3125)
 texture = ExtResource("1_cmhgv")
 script = ExtResource("3_5ppbn")
 attack_name = "dime_laser"
 coin_type = 3
-description = "dime laser"
+display_name = "Dime Laser"
+description = "A piercing laser attack that uses dimes"
 cost = 3.34
 
-[node name="QuarterDisk" type="Sprite2D" parent="."]
-position = Vector2(418, 43)
-scale = Vector2(0.34375, 0.3125)
-texture = ExtResource("1_cmhgv")
-script = ExtResource("3_5ppbn")
-attack_name = "quarter_disk"
-coin_type = 4
-description = "quarter disk"
-
-[node name="QuarterGrenade" type="Sprite2D" parent="."]
-position = Vector2(504, 43)
-scale = Vector2(0.34375, 0.3125)
-texture = ExtResource("1_cmhgv")
-script = ExtResource("3_5ppbn")
-attack_name = "quarter_grenade"
-coin_type = 4
-description = "quarter grenade"
-cost = 6.09
-
-[node name="HealthUpgrade" type="Sprite2D" parent="."]
-position = Vector2(70, 114)
-scale = Vector2(0.34375, 0.3125)
-texture = ExtResource("1_cmhgv")
-script = ExtResource("5_urc8w")
-modify_stat = 1
-amount = 1.0
-description = "health upgrade"
-cost = 2.05
-
 [node name="DimeDamage" type="Sprite2D" parent="."]
-position = Vector2(146, 112)
+position = Vector2(199, 134)
 scale = Vector2(0.34375, 0.3125)
 texture = ExtResource("1_cmhgv")
 script = ExtResource("2_6g46p")
 amount = 2.0
 coin_type = 3
-description = "increases damage of dimes by 2"
+display_name = "Dime Damage Up"
+description = "Increases damage of dimes by 2"
 cost = 2.35
+
+[node name="DimeFireRate" type="Sprite2D" parent="."]
+position = Vector2(272, 134)
+scale = Vector2(0.34375, 0.3125)
+texture = ExtResource("1_cmhgv")
+script = ExtResource("2_6g46p")
+modify_stat = 4
+amount = 0.2
+coin_type = 3
+display_name = "Dime Fire Rate Up"
+description = "Increases fire rate of dime attacks by 40%"
+cost = 2.68
+
+[node name="DimeDuration" type="Sprite2D" parent="."]
+position = Vector2(345, 136)
+scale = Vector2(0.34375, 0.3125)
+texture = ExtResource("1_cmhgv")
+script = ExtResource("2_6g46p")
+modify_stat = 3
+amount = 0.5
+coin_type = 3
+display_name = "Dime Duration Up"
+description = "Increases duration of dime attacks by 0.5 seconds"
+cost = 3.4
+
+[node name="DimeConserve" type="Sprite2D" parent="."]
+position = Vector2(420, 137)
+scale = Vector2(0.34375, 0.3125)
+texture = ExtResource("1_cmhgv")
+script = ExtResource("2_6g46p")
+modify_stat = 6
+amount = 0.25
+coin_type = 3
+display_name = "Dime Conserve Chance"
+description = "25% chance not to consume a dime on fire"
+cost = 4.53
+
+[node name="QuarterDisk" type="Sprite2D" parent="."]
+position = Vector2(53, 225)
+scale = Vector2(0.34375, 0.3125)
+texture = ExtResource("1_cmhgv")
+script = ExtResource("3_5ppbn")
+attack_name = "quarter_disk"
+coin_type = 4
+display_name = "Quarter Disk"
+description = "quarter disk"
+
+[node name="QuarterGrenade" type="Sprite2D" parent="."]
+position = Vector2(126, 223)
+scale = Vector2(0.34375, 0.3125)
+texture = ExtResource("1_cmhgv")
+script = ExtResource("3_5ppbn")
+attack_name = "quarter_grenade"
+coin_type = 4
+display_name = "Quarter Grenade"
+description = "Use a quarter to launch a powerful grenade"
+cost = 6.09
+
+[node name="QuarterConserve" type="Sprite2D" parent="."]
+position = Vector2(210, 217)
+scale = Vector2(0.34375, 0.3125)
+texture = ExtResource("1_cmhgv")
+script = ExtResource("2_6g46p")
+modify_stat = 6
+amount = 0.25
+coin_type = 4
+display_name = "Quarter Conserve Chance"
+description = "25% chance not to consume a quarter on fire"
+cost = 3.01
+
+[node name="QuarterFireRate" type="Sprite2D" parent="."]
+position = Vector2(293, 218)
+scale = Vector2(0.34375, 0.3125)
+texture = ExtResource("1_cmhgv")
+script = ExtResource("2_6g46p")
+modify_stat = 4
+amount = 1.0
+coin_type = 4
+display_name = "Quarter Fire Rate Up"
+description = "Increases the fire rate of quarter attacks by 50%"
+cost = 4.11
+
+[node name="QuarterDuration" type="Sprite2D" parent="."]
+position = Vector2(365, 217)
+scale = Vector2(0.34375, 0.3125)
+texture = ExtResource("1_cmhgv")
+script = ExtResource("2_6g46p")
+modify_stat = 3
+amount = 1.0
+coin_type = 4
+display_name = "Quarter Duration Up"
+description = "Increases duration of quarter attacks by 0.5 seconds"
+cost = 5.1
+
+[node name="QuarterDamage" type="Sprite2D" parent="."]
+position = Vector2(435, 218)
+scale = Vector2(0.34375, 0.3125)
+texture = ExtResource("1_cmhgv")
+script = ExtResource("2_6g46p")
+amount = 2.0
+coin_type = 4
+display_name = "Quarter Damage Up"
+description = "Increases damage of quarters by 2"
+cost = 7.13
+
+[node name="HealthUpgrade" type="Sprite2D" parent="."]
+position = Vector2(54, 298)
+scale = Vector2(0.34375, 0.3125)
+texture = ExtResource("1_cmhgv")
+script = ExtResource("5_urc8w")
+modify_stat = 1
+amount = 1.0
+display_name = "Health Upgrade"
+description = "Adds an additional heart"
+cost = 2.05
+
+[node name="SpeedUpgrade" type="Sprite2D" parent="."]
+position = Vector2(124, 295)
+scale = Vector2(0.34375, 0.3125)
+texture = ExtResource("1_cmhgv")
+script = ExtResource("5_urc8w")
+amount = 15.0
+display_name = "Speed Upgrade"
+description = "Increases speed by 15%"
+cost = 2.47

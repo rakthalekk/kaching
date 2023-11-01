@@ -89,7 +89,7 @@ text = "Dollar Fragments: 0"
 layout_mode = 2
 text = "Dollars: 0"
 
-[node name="Hearts" type="ColorRect" parent="."]
+[node name="Hearts" type="Control" parent="."]
 custom_minimum_size = Vector2(135, 0)
 layout_mode = 1
 anchors_preset = 7
@@ -97,12 +97,11 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -125.0
+offset_left = -124.0
 offset_top = -40.0
-offset_right = 15.0
+offset_right = 16.0
 grow_horizontal = 2
 grow_vertical = 0
-color = Color(0.176471, 0.176471, 0.176471, 1)
 
 [node name="Heart1" parent="Hearts" instance=ExtResource("2_d0rdf")]
 position = Vector2(13, 19)

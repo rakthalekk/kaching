@@ -47,12 +47,12 @@ func add_mod(mod) -> ModButton:
 func update_mod_info(button: ModButton):
 	var mod = button.modification as Modification
 	selected_button = button
-	%ModName.text = mod.name
+	%ModName.text = mod.display_name
 	
 	if mod is CoinModification:
 		%ModType.text = Modification.COIN_TYPE.keys()[mod.coin_type]
 	else:
-		%ModType.text = "no type???"
+		%ModType.text = "PLAYER BUFF"
 	
 	%ModificationImage.texture = mod.texture
 	%ModCost.text = "Cost: $%.2f" % mod.cost
