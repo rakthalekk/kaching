@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b2m1jq373m2ye"]
 
 [ext_resource type="Script" path="res://src/health_pickup.gd" id="1_5p4ic"]
-[ext_resource type="Texture2D" uid="uid://it8hjt58tya5" path="res://icon.svg" id="1_ajnqs"]
+[ext_resource type="Texture2D" uid="uid://cmkfu7x4karj6" path="res://assets/sprites/health pickup.png" id="2_cambi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3y85a"]
 size = Vector2(130, 120)
@@ -17,8 +17,6 @@ scale = Vector2(0.1, 0.1)
 shape = SubResource("RectangleShape2D_3y85a")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 1, 1, 1)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_ajnqs")
+texture = ExtResource("2_cambi")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

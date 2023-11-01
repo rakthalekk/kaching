@@ -104,27 +104,27 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="Heart1" parent="Hearts" instance=ExtResource("2_d0rdf")]
-position = Vector2(13, 19)
+position = Vector2(13, 14)
 
 [node name="Heart2" parent="Hearts" instance=ExtResource("2_d0rdf")]
-position = Vector2(32, 19)
+position = Vector2(29, 14)
 
 [node name="Heart3" parent="Hearts" instance=ExtResource("2_d0rdf")]
-position = Vector2(50, 19)
+position = Vector2(45, 14)
 
 [node name="Heart4" parent="Hearts" instance=ExtResource("2_d0rdf")]
-position = Vector2(69, 19)
+position = Vector2(61, 14)
 
 [node name="Heart5" parent="Hearts" instance=ExtResource("2_d0rdf")]
-position = Vector2(88, 19)
+position = Vector2(77, 14)
 
 [node name="Heart6" parent="Hearts" instance=ExtResource("2_d0rdf")]
 visible = false
-position = Vector2(107, 19)
+position = Vector2(93, 14)
 
 [node name="Heart7" parent="Hearts" instance=ExtResource("2_d0rdf")]
 visible = false
-position = Vector2(126, 19)
+position = Vector2(109, 14)
 
 [node name="Coins" type="Control" parent="."]
 layout_mode = 1
