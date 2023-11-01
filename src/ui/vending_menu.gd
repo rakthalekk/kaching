@@ -1,5 +1,5 @@
 class_name VendingMenu
-extends Control
+extends MarginContainer
 
 var selected_button : ModButton
 var player : Player
@@ -54,8 +54,8 @@ func update_mod_info(button: ModButton):
 	else:
 		%ModType.text = "PLAYER BUFF"
 	
-	%ModificationImage.texture = mod.texture
-	%ModCost.text = "Cost: $%.2f" % mod.cost
+	#%ModificationImage.texture = mod.texture
+	%ModCost.text = "        Cost: $%.2f" % mod.cost
 	%ModInfo.text = mod.description
 
 
