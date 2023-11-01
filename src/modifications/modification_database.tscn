@@ -39,7 +39,7 @@ script = ExtResource("3_5ppbn")
 attack_name = "penny_shotgun"
 coin_type = 1
 display_name = "Penny Shotgun"
-description = "A short-ranged burst of penny bullets"
+description = "Shoot out multiple pennies in a higher damaging short-ranged attack."
 cost = 1.25
 
 [node name="PennyConserve" type="Sprite2D" parent="."]
@@ -50,8 +50,8 @@ script = ExtResource("2_6g46p")
 modify_stat = 6
 amount = 0.25
 coin_type = 1
-display_name = "Penny Conserve Chance"
-description = "25% chance not to consume a penny on fire"
+display_name = "Penny on a String"
+description = "Gain a chance to pull your pennies back into your ammo reserve after use."
 cost = 3.22
 
 [node name="PennyFireRate" type="Sprite2D" parent="."]
@@ -62,8 +62,8 @@ script = ExtResource("2_6g46p")
 modify_stat = 4
 amount = 0.1
 coin_type = 1
-display_name = "Penny Fire Rate Up"
-description = "Increases the fire rate of penny attacks"
+display_name = "Penny NoJam®"
+description = "This product allows for your pennies to shoot out even faster, no jams guaranteed."
 cost = 4.15
 
 [node name="DimeBullet" type="Sprite2D" parent="."]
@@ -84,7 +84,7 @@ script = ExtResource("3_5ppbn")
 attack_name = "dime_laser"
 coin_type = 3
 display_name = "Dime Laser"
-description = "A piercing laser attack that uses dimes"
+description = "Release the energy stored in the tightly packed coin into a laser that hits enemies multiple times."
 cost = 3.34
 
 [node name="DimeDamage" type="Sprite2D" parent="."]
@@ -94,8 +94,8 @@ texture = ExtResource("1_cmhgv")
 script = ExtResource("2_6g46p")
 amount = 2.0
 coin_type = 3
-display_name = "Dime Damage Up"
-description = "Increases damage of dimes by 2"
+display_name = "Weighted Dimes"
+description = "These weights make your dimes hit harder."
 cost = 2.35
 
 [node name="DimeFireRate" type="Sprite2D" parent="."]
@@ -106,8 +106,8 @@ script = ExtResource("2_6g46p")
 modify_stat = 4
 amount = 0.2
 coin_type = 3
-display_name = "Dime Fire Rate Up"
-description = "Increases fire rate of dime attacks by 40%"
+display_name = "Dime NoJam®"
+description = "This product allows for your dimes to shoot out even faster, no jams guaranteed."
 cost = 2.68
 
 [node name="DimeDuration" type="Sprite2D" parent="."]
@@ -118,8 +118,8 @@ script = ExtResource("2_6g46p")
 modify_stat = 3
 amount = 0.5
 coin_type = 3
-display_name = "Dime Duration Up"
-description = "Increases duration of dime attacks by 0.5 seconds"
+display_name = "Dime Polish"
+description = "Makes your dimes as good as new and elongates their lifespans."
 cost = 3.4
 
 [node name="DimeConserve" type="Sprite2D" parent="."]
@@ -130,8 +130,8 @@ script = ExtResource("2_6g46p")
 modify_stat = 6
 amount = 0.25
 coin_type = 3
-display_name = "Dime Conserve Chance"
-description = "25% chance not to consume a dime on fire"
+display_name = "Dime on a String"
+description = "Gain a chance to pull your dimes back into your ammo reserve after use."
 cost = 4.53
 
 [node name="QuarterDisk" type="Sprite2D" parent="."]
@@ -152,7 +152,7 @@ script = ExtResource("3_5ppbn")
 attack_name = "quarter_grenade"
 coin_type = 4
 display_name = "Quarter Grenade"
-description = "Use a quarter to launch a powerful grenade"
+description = "Shoot out a quarter that explodes and does massive damage when it reaches the intended target."
 cost = 6.09
 
 [node name="QuarterConserve" type="Sprite2D" parent="."]
@@ -163,8 +163,8 @@ script = ExtResource("2_6g46p")
 modify_stat = 6
 amount = 0.25
 coin_type = 4
-display_name = "Quarter Conserve Chance"
-description = "25% chance not to consume a quarter on fire"
+display_name = "Quarter on a String"
+description = "Gain a chance to pull your quarters back into your ammo reserve after use."
 cost = 3.01
 
 [node name="QuarterFireRate" type="Sprite2D" parent="."]
@@ -175,8 +175,8 @@ script = ExtResource("2_6g46p")
 modify_stat = 4
 amount = 1.0
 coin_type = 4
-display_name = "Quarter Fire Rate Up"
-description = "Increases the fire rate of quarter attacks by 50%"
+display_name = "Quarter NoJam®"
+description = "This product allows for your quarters to shoot out even faster, no jams guaranteed."
 cost = 4.11
 
 [node name="QuarterDuration" type="Sprite2D" parent="."]
@@ -187,8 +187,8 @@ script = ExtResource("2_6g46p")
 modify_stat = 3
 amount = 1.0
 coin_type = 4
-display_name = "Quarter Duration Up"
-description = "Increases duration of quarter attacks by 0.5 seconds"
+display_name = "Quarter Polish"
+description = "Makes your quarters as good as new and elongates their lifespans."
 cost = 5.1
 
 [node name="QuarterDamage" type="Sprite2D" parent="."]
@@ -198,8 +198,8 @@ texture = ExtResource("1_cmhgv")
 script = ExtResource("2_6g46p")
 amount = 2.0
 coin_type = 4
-display_name = "Quarter Damage Up"
-description = "Increases damage of quarters by 2"
+display_name = "Weighted Quarters"
+description = "These weights make your quarters hit harder."
 cost = 7.13
 
 [node name="HealthUpgrade" type="Sprite2D" parent="."]
@@ -209,8 +209,19 @@ texture = ExtResource("1_cmhgv")
 script = ExtResource("5_urc8w")
 modify_stat = 1
 amount = 1.0
-display_name = "Health Upgrade"
-description = "Adds an additional heart"
+display_name = "Bag of Chips"
+description = "Eating this vending delicacy will build up your resistance to attacks."
+cost = 2.05
+
+[node name="HealthUpgrade2" type="Sprite2D" parent="."]
+position = Vector2(54, 298)
+scale = Vector2(0.34375, 0.3125)
+texture = ExtResource("1_cmhgv")
+script = ExtResource("5_urc8w")
+modify_stat = 1
+amount = 1.0
+display_name = "Generic Protein Bar"
+description = "Eating this vending delicacy will build up your resistance to attacks."
 cost = 2.05
 
 [node name="SpeedUpgrade" type="Sprite2D" parent="."]
@@ -219,8 +230,8 @@ scale = Vector2(0.34375, 0.3125)
 texture = ExtResource("1_cmhgv")
 script = ExtResource("5_urc8w")
 amount = 15.0
-display_name = "Speed Upgrade"
-description = "Increases speed by 15%"
+display_name = "Running Shoe"
+description = "Just one shoe, though it will still make you run faster."
 cost = 2.47
 
 [node name="RollUpgrade" type="Sprite2D" parent="."]
@@ -228,8 +239,8 @@ position = Vector2(204, 296)
 scale = Vector2(0.34375, 0.3125)
 texture = ExtResource("1_cmhgv")
 script = ExtResource("6_o5qvf")
-display_name = "Roll"
-description = "Allows you to press SPACE to roll, dodging enemy attacks."
+display_name = "Dodge Instruction Booklet"
+description = "The ultimate dummies guide to dodging enemy attacks! (press SPACE to dodge)"
 cost = 8.14
 
 [node name="LaserSight" type="Sprite2D" parent="."]
@@ -239,5 +250,5 @@ texture = ExtResource("1_cmhgv")
 script = ExtResource("6_o5qvf")
 type = 1
 display_name = "Laser Sight"
-description = "Toggles a Laser sight to increase accuracy. C to toggle"
+description = "A toy laser that could go on your gun.  Just be respectful and don’t point it to the sky."
 cost = 4.67
