@@ -48,8 +48,15 @@ func update_coins():
 	$Coins/Quarters.text = str(player.quarters)
 
 
-func update_dollar_fragments():
-	$Dollars/DollarFragments.text = "Dollar Fragments: %d" % player.dollar_fragments
+func update_dollar_fragments(anim_name):
+	if (anim_name == "complete_bill"):
+		$Dollars/DollarFragUI.complete_bill()
+	if (anim_name == "1_frag"):
+		$Dollars/DollarFragUI.get_anim_player().play("1_frag")
+		print("hi ho")
+	if (anim_name == "2_frag"):
+		$Dollars/DollarFragUI.get_anim_player().play("2_frag")
+	
 	$Dollars/Dollars.text = "Dollars: %d" % player.dollars
 
 
