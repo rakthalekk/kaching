@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqkll6c6traf3"]
+[gd_scene load_steps=7 format=3 uid="uid://dqkll6c6traf3"]
 
 [ext_resource type="Script" path="res://src/modifications/modification_database.gd" id="1_axt4s"]
 [ext_resource type="Texture2D" uid="uid://it8hjt58tya5" path="res://icon.svg" id="1_cmhgv"]
 [ext_resource type="Script" path="res://src/modifications/coin_stat_modification.gd" id="2_6g46p"]
 [ext_resource type="Script" path="res://src/modifications/attack_modification.gd" id="3_5ppbn"]
 [ext_resource type="Script" path="res://src/modifications/player_stat_modification.gd" id="5_urc8w"]
+[ext_resource type="Script" path="res://src/modifications/special_modification.gd" id="6_o5qvf"]
 
 [node name="ModificationDatabase" type="Node2D"]
 script = ExtResource("1_axt4s")
@@ -221,3 +222,22 @@ amount = 15.0
 display_name = "Speed Upgrade"
 description = "Increases speed by 15%"
 cost = 2.47
+
+[node name="RollUpgrade" type="Sprite2D" parent="."]
+position = Vector2(204, 296)
+scale = Vector2(0.34375, 0.3125)
+texture = ExtResource("1_cmhgv")
+script = ExtResource("6_o5qvf")
+display_name = "Roll"
+description = "Allows you to press SPACE to roll, dodging enemy attacks."
+cost = 8.14
+
+[node name="LaserSight" type="Sprite2D" parent="."]
+position = Vector2(204, 296)
+scale = Vector2(0.34375, 0.3125)
+texture = ExtResource("1_cmhgv")
+script = ExtResource("6_o5qvf")
+type = 1
+display_name = "Laser Sight"
+description = "Toggles a Laser sight to increase accuracy. C to toggle"
+cost = 4.67

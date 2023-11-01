@@ -22,6 +22,8 @@ layer_5/tile_data = PackedInt32Array()
 
 [node name="Player" parent="." instance=ExtResource("2_eo1x1")]
 position = Vector2(226, 290)
+speed = null
+knockback_friction = null
 
 [node name="Vending Machine" parent="." instance=ExtResource("4_chwc5")]
 position = Vector2(129, 576)
