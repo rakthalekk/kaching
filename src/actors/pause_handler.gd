@@ -12,7 +12,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("equip_menu"):
+	if Input.is_action_just_pressed("equip_menu") && !Global.vending_menu_open:
 		equip_menu.visible = !equip_menu.visible
 		hud.visible = !hud.visible
 		get_tree().paused = !get_tree().paused

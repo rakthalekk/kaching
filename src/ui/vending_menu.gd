@@ -12,6 +12,7 @@ const MODIFICATION_BUTTON = preload("res://src/ui/modification_button.tscn")
 func _ready():
 	player = get_tree().get_first_node_in_group("player") as Player
 	selected_button = null
+	Global.vending_menu_open = true
 
 
 func populate_mods(vending_machine: VendingMachine):
@@ -80,4 +81,5 @@ func _on_purchase_button_pressed():
 
 func _on_exit_button_pressed():
 	get_tree().paused = false
+	Global.vending_menu_open = false
 	queue_free()

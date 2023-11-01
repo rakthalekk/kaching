@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqkll6c6traf3"]
+[gd_scene load_steps=6 format=3 uid="uid://dqkll6c6traf3"]
 
 [ext_resource type="Script" path="res://src/modifications/modification_database.gd" id="1_axt4s"]
 [ext_resource type="Texture2D" uid="uid://it8hjt58tya5" path="res://icon.svg" id="1_cmhgv"]
 [ext_resource type="Script" path="res://src/modifications/coin_stat_modification.gd" id="2_6g46p"]
 [ext_resource type="Script" path="res://src/modifications/attack_modification.gd" id="3_5ppbn"]
+[ext_resource type="Script" path="res://src/modifications/player_stat_modification.gd" id="5_urc8w"]
 
 [node name="ModificationDatabase" type="Node2D"]
 script = ExtResource("1_axt4s")
@@ -74,3 +75,13 @@ attack_name = "quarter_grenade"
 coin_type = 4
 description = "quarter grenade"
 cost = 6.09
+
+[node name="HealthUpgrade" type="Sprite2D" parent="."]
+position = Vector2(70, 114)
+scale = Vector2(0.34375, 0.3125)
+texture = ExtResource("1_cmhgv")
+script = ExtResource("5_urc8w")
+modify_stat = 1
+amount = 1.0
+description = "health upgrade"
+cost = 2.05

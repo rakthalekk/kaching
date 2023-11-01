@@ -25,7 +25,7 @@ var dimes := 300
 var quarters := 300
 
 var dollar_fragments = 0
-var dollars = 1
+var dollars = 300
 
 var modifications: Array[Modification]
 
@@ -118,6 +118,11 @@ func update_modifications():
 			mod_struct.stat_modifiers[mod.modify_stat] = mod.amount
 		elif mod is AttackModification:
 			attack_modifications[mod.coin_type].append(mod.attack_name)
+		elif mod is PlayerStatModification:
+			if mod.modify_stat == Modification.MODIFY_PLAYER_STAT.HEALTH:
+				max_health += 1
+				hud.upgrade_health()
+				modifications.erase(mod)
 	
 	penny_equip = attack_modifications[Modification.COIN_TYPE.PENNY][0]
 	dime_equip = attack_modifications[Modification.COIN_TYPE.DIME][0]

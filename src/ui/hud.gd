@@ -7,6 +7,12 @@ var player: Player
 var last_active_heart = 5
 var total_hearts = 5
 
+
+func _ready():
+	($Hearts/Heart6 as Heart).break_heart()
+	($Hearts/Heart7 as Heart).break_heart()
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
